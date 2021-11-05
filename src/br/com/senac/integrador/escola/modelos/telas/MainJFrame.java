@@ -25,6 +25,7 @@ public class MainJFrame extends javax.swing.JFrame {
     private void initComponents() {
 
         botaoCadastroAluno = new javax.swing.JButton();
+        botaoNovoFuncionario = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -35,21 +36,32 @@ public class MainJFrame extends javax.swing.JFrame {
             }
         });
 
+        botaoNovoFuncionario.setText("Novo Funcionário");
+        botaoNovoFuncionario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                botaoNovoFuncionarioActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(64, 64, 64)
-                .addComponent(botaoCadastroAluno)
-                .addContainerGap(246, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(botaoNovoFuncionario)
+                    .addComponent(botaoCadastroAluno))
+                .addContainerGap(212, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(85, 85, 85)
                 .addComponent(botaoCadastroAluno)
-                .addContainerGap(187, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(botaoNovoFuncionario)
+                .addContainerGap(141, Short.MAX_VALUE))
         );
 
         pack();
@@ -58,6 +70,10 @@ public class MainJFrame extends javax.swing.JFrame {
     private void botaoCadastroAlunoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastroAlunoActionPerformed
         JFrameManager.changeJFrame(this, new CadastroAlunoJFrame());
     }//GEN-LAST:event_botaoCadastroAlunoActionPerformed
+
+    private void botaoNovoFuncionarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoNovoFuncionarioActionPerformed
+        JFrameManager.changeJFrame(this, new CadastroFuncionarioJFrame());
+    }//GEN-LAST:event_botaoNovoFuncionarioActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,5 +110,6 @@ public class MainJFrame extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton botaoCadastroAluno;
+    private javax.swing.JButton botaoNovoFuncionario;
     // End of variables declaration//GEN-END:variables
 }
