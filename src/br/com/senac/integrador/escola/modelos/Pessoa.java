@@ -5,7 +5,7 @@ import br.com.senac.integrador.escola.modelos.enums.CorRaca;
 import br.com.senac.integrador.modelos.enums.EstadoCivil;
 
 /**
- *
+ * Definicação da classe Pessoa
  * @author Felipe Godinho Dal Molin
  */
 public class Pessoa {

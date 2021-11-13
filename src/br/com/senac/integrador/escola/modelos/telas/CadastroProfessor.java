@@ -222,35 +222,35 @@ public class CadastroProfessor extends javax.swing.JFrame {
         jPanelEndereco.setBackground(new java.awt.Color(19, 16, 89));
 
         campoBairro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoBairro.setForeground(new java.awt.Color(255, 255, 255));
+        campoBairro.setForeground(new java.awt.Color(0, 0, 0));
 
         labelNumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelNumero.setForeground(new java.awt.Color(255, 255, 255));
         labelNumero.setText("Número:");
 
         campoNumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoNumero.setForeground(new java.awt.Color(255, 255, 255));
+        campoNumero.setForeground(new java.awt.Color(0, 0, 0));
 
         labelCidade2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCidade2.setForeground(new java.awt.Color(255, 255, 255));
         labelCidade2.setText("Endereço:");
 
         campoEndereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        campoEndereco.setForeground(new java.awt.Color(0, 0, 0));
 
         labelCidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCidade.setForeground(new java.awt.Color(255, 255, 255));
         labelCidade.setText("Cidade:");
 
         campoCidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoCidade.setForeground(new java.awt.Color(255, 255, 255));
+        campoCidade.setForeground(new java.awt.Color(0, 0, 0));
 
         labelCidade1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelCidade1.setForeground(new java.awt.Color(255, 255, 255));
         labelCidade1.setText("Estado:");
 
         campoEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoEstado.setForeground(new java.awt.Color(255, 255, 255));
+        campoEstado.setForeground(new java.awt.Color(0, 0, 0));
 
         labelBairro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelBairro.setForeground(new java.awt.Color(255, 255, 255));
@@ -304,8 +304,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelCidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         content.add(jPanelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, -1, -1));
@@ -313,10 +312,10 @@ public class CadastroProfessor extends javax.swing.JFrame {
         jPanelPessoa.setBackground(new java.awt.Color(19, 16, 89));
 
         campoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoTelefone.setForeground(new java.awt.Color(255, 255, 255));
+        campoTelefone.setForeground(new java.awt.Color(0, 0, 0));
 
         campoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoEmail.setForeground(new java.awt.Color(255, 255, 255));
+        campoEmail.setForeground(new java.awt.Color(0, 0, 0));
 
         labelNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelNome.setForeground(new java.awt.Color(255, 255, 255));
@@ -335,24 +334,24 @@ public class CadastroProfessor extends javax.swing.JFrame {
         labelEmail.setText("E-mail:");
 
         campoNome.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoNome.setForeground(new java.awt.Color(255, 255, 255));
+        campoNome.setForeground(new java.awt.Color(0, 0, 0));
 
         campoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoCPF.setForeground(new java.awt.Color(255, 255, 255));
+        campoCPF.setForeground(new java.awt.Color(0, 0, 0));
 
         labelRG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelRG.setForeground(new java.awt.Color(255, 255, 255));
         labelRG.setText("RG:");
 
         campoRG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoRG.setForeground(new java.awt.Color(255, 255, 255));
+        campoRG.setForeground(new java.awt.Color(0, 0, 0));
 
         labelDeficiencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelDeficiencia.setForeground(new java.awt.Color(255, 255, 255));
         labelDeficiencia.setText("Deficiência:");
 
         campoRG1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoRG1.setForeground(new java.awt.Color(255, 255, 255));
+        campoRG1.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanelPessoaLayout = new javax.swing.GroupLayout(jPanelPessoa);
         jPanelPessoa.setLayout(jPanelPessoaLayout);
@@ -415,7 +414,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
 
         campoFormacao.setColumns(20);
         campoFormacao.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoFormacao.setForeground(new java.awt.Color(126, 35, 162));
+        campoFormacao.setForeground(new java.awt.Color(0, 0, 0));
         campoFormacao.setLineWrap(true);
         campoFormacao.setRows(5);
         jScrollPane1.setViewportView(campoFormacao);
@@ -573,7 +572,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
 
         campoHistoricoProfissional.setColumns(20);
         campoHistoricoProfissional.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoHistoricoProfissional.setForeground(new java.awt.Color(255, 255, 255));
+        campoHistoricoProfissional.setForeground(new java.awt.Color(0, 0, 0));
         campoHistoricoProfissional.setRows(5);
         jScrollPane2.setViewportView(campoHistoricoProfissional);
 

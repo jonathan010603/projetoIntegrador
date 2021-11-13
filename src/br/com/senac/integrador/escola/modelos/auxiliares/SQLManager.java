@@ -1,5 +1,6 @@
 package br.com.senac.integrador.escola.modelos.auxiliares;
 
+import br.com.senac.integrador.escola.modelos.Login;
 import br.com.senac.integrador.escola.modelos.Aluno;
 import br.com.senac.integrador.escola.modelos.Endereco;
 import br.com.senac.integrador.escola.modelos.Pessoa;
@@ -32,7 +33,7 @@ public abstract class SQLManager {
         statement.execute(sqlStatement);
     };
     public static void cadastrarEndereco(Endereco endereco) throws SQLException {
-        Connection connection = SQLManager.createConnection();
+        connection = SQLManager.createConnection();
         Statement statement = connection.createStatement();
         
         String sqlStatement = String.format(
@@ -44,38 +45,79 @@ public abstract class SQLManager {
         
         statement.execute(sqlStatement);
     }
-    public static void cadastrarPessoa(Pessoa pessoa) throws SQLException {
-        SQLManager.cadastrarEndereco(pessoa.getEndereco());
+    public static void cadastrarPessoa(Pessoa p) throws SQLException {
+        SQLManager.cadastrarEndereco(p.getEndereco());
         
         connection = SQLManager.createConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery("SELECT * FROM endereco");
+        ResultSet result = statement.executeQuery("SELECT idEndereco FROM endereco");
         
         int idEndereco = -1;
         
         while(result.next()) {
-            idEndereco = result.getInt("idEndereco");
+            idEndereco = result.getInt(Tags.idEndereco.name());
         }
         if(idEndereco == -1) {
             throw new RuntimeException("idEndereco = -1");
         }
         
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sqlstate = String.format(
+                "INSERT INTO pessoa " +
+                "(idEndereco, nome, cpf, rg, telefone, email, deficiencia, genero, estadoCivil, cor) VALUES " +
+                "(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                idEndereco, p.getNome(), p.getCpf(), p.getRg(), p.getTelefone(), p.getEmail(), p.getDeficiencia(),
+                p.getGenero().name(), p.getEstadoCivil().name(), p.getCorRaca().name()
+        );
+        statement.execute(sqlstate);
+        System.out.println("Pessoa cadastrada.");
+    }
+    public static void cadastrarLogin(Login login) throws SQLException {
+        connection = SQLManager.createConnection();
+        Statement statement = connection.createStatement();
+        
+        String sqlState = String.format(
+                "INSERT INTO login " +
+                "(tipoLogin, usuario, senha) VALUES " +
+                "('%s', '%s', '%s')",
+                login.getTipo(), login.getUsuario(), login.getSenha()
+        );
+        statement.execute(sqlState);
     }
     public static void cadastrarProfessor(Professor professor) throws SQLException {
         SQLManager.cadastrarPessoa(professor);
         connection = SQLManager.createConnection();
         Statement statement = connection.createStatement();
-        ResultSet result = statement.executeQuery(
-            "SELECT MAX(idPessoa) FROM pessoa");
         
-        int idPessoaProfessor = -1;
-        while(result.next()){
-            idPessoaProfessor = result.getInt(Tags.idPessoa.name());
+        int idPessoa = -1, idLogin = -1;
+        
+        ResultSet resultPessoa = statement.executeQuery("SELECT idPessoa FROM pessoa");
+        while(resultPessoa.next()){
+            idPessoa = resultPessoa.getInt(Tags.idPessoa.name());
+        }
+        ResultSet resultLogin = statement.executeQuery("SELECT idLogin FROM login WHERE tipoLogin='PROFESSOR'");
+        while(resultLogin.next()) {
+            idLogin = resultLogin.getInt(Tags.idLogin.name());
+        }
+        
+        try {
+            if(idLogin == -1) {
+                throw new RuntimeException("Nenhum login cadastrado.");
+            }  
+            if(idPessoa == -1) {
+                throw new RuntimeException("Nenhuma pessoa cadastrada.");
+            }
+        } catch(RuntimeException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
         }
         
         
-        throw new UnsupportedOperationException("Not supported yet.");
+        String sqlState = String.format(
+                "INSERT INTO professor " +
+                "(idLogin, idPessoa, formacao, historicoProfissional) VALUES " +
+                "(%d, %d, '%s', '%s')",
+                idLogin, idPessoa, professor.getFormacao(), professor.getHistoricoProfisional());
+        statement.execute(sqlState);
     }
     private static Connection createConnection() throws SQLException {
         if(isSQLSet) {

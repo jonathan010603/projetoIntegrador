@@ -1,7 +1,7 @@
 package br.com.senac.integrador.escola.modelos;
 
 /**
- *
+ * Definição da classe Endereco
  * @author Felipe Godinho Dal Molin
  */
 public class Endereco {

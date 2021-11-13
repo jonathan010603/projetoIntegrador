@@ -11,7 +11,7 @@ import javax.swing.JTextField;
  *
  * @author Felipe Godinho Dal Molin
  */
-public class Manager {
+public abstract class Manager {
 
     public static int getIndexOfButtonSelectByList(ArrayList<AbstractButton> buttonsPeriodo) {
         for(AbstractButton button : buttonsPeriodo) {
