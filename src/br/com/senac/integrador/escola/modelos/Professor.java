@@ -13,7 +13,8 @@ public class Professor extends Pessoa {
         super(
             pessoa.getNome(),pessoa.getCpf(), 
             pessoa.getRg(), pessoa.getTelefone(), 
-            pessoa.getEmail(), pessoa.getDeficiencia(), 
+            pessoa.getEmail(), pessoa.getDeficiencia(),
+            pessoa.getNacionalidade(),
             pessoa.getEstadoCivil(), pessoa.getEndereco(), 
             pessoa.getGenero(), pessoa.getCorRaca());
         this.formacao = formacao;

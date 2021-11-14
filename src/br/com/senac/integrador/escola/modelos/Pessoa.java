@@ -16,19 +16,21 @@ public class Pessoa {
     private String telefone;
     private String email;
     private String deficiencia;
+    private String nacionalidade;
     private EstadoCivil estadoCivil;
     private Endereco endereco;
     private Genero genero;
     private CorRaca cor;
     
     public Pessoa
-        (String nome, String cpf, String rg, String telefone, String email, String deficiencia, EstadoCivil estadoCivil, Endereco endereco, Genero genero, CorRaca cor) {
+        (String nome, String cpf, String rg, String telefone, String email, String deficiencia, String nacionalidade, EstadoCivil estadoCivil, Endereco endereco, Genero genero, CorRaca cor) {
         this.nome = nome;
         this.cpf = cpf;
         this.rg = rg;
         this.telefone = telefone;
         this.email = email;
         this.deficiencia = deficiencia;
+        this.nacionalidade = nacionalidade;
         this.estadoCivil = estadoCivil;
         this.endereco = endereco;
         this.genero = genero;
@@ -52,6 +54,9 @@ public class Pessoa {
     }
     public String getDeficiencia() {
         return deficiencia;
+    }
+    public String getNacionalidade() {
+        return nacionalidade;
     }
     public EstadoCivil getEstadoCivil() {
         return estadoCivil;

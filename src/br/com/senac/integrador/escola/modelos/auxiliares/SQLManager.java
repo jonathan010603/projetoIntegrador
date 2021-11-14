@@ -63,9 +63,10 @@ public abstract class SQLManager {
         
         String sqlstate = String.format(
                 "INSERT INTO pessoa " +
-                "(idEndereco, nome, cpf, rg, telefone, email, deficiencia, genero, estadoCivil, cor) VALUES " +
-                "(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
+                "(idEndereco, nome, cpf, rg, telefone, email, deficiencia, nacionalidade, genero, estadoCivil, cor) VALUES " +
+                "(%d, '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s', '%s')",
                 idEndereco, p.getNome(), p.getCpf(), p.getRg(), p.getTelefone(), p.getEmail(), p.getDeficiencia(),
+                p.getNacionalidade(),
                 p.getGenero().name(), p.getEstadoCivil().name(), p.getCorRaca().name()
         );
         statement.execute(sqlstate);

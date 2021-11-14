@@ -60,13 +60,15 @@ public class CadastroProfessor extends javax.swing.JFrame {
         campoBairro = new javax.swing.JTextField();
         labelNumero = new javax.swing.JLabel();
         campoNumero = new javax.swing.JTextField();
-        labelCidade2 = new javax.swing.JLabel();
+        labelEndereco = new javax.swing.JLabel();
         campoEndereco = new javax.swing.JTextField();
         labelCidade = new javax.swing.JLabel();
         campoCidade = new javax.swing.JTextField();
         labelCidade1 = new javax.swing.JLabel();
         campoEstado = new javax.swing.JTextField();
         labelBairro = new javax.swing.JLabel();
+        campoNacionalidade = new javax.swing.JTextField();
+        labelNacionalidade = new javax.swing.JLabel();
         jPanelPessoa = new javax.swing.JPanel();
         campoTelefone = new javax.swing.JTextField();
         campoEmail = new javax.swing.JTextField();
@@ -228,9 +230,9 @@ public class CadastroProfessor extends javax.swing.JFrame {
         campoNumero.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoNumero.setForeground(new java.awt.Color(0, 0, 0));
 
-        labelCidade2.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        labelCidade2.setForeground(new java.awt.Color(255, 255, 255));
-        labelCidade2.setText("Endereço:");
+        labelEndereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelEndereco.setForeground(new java.awt.Color(255, 255, 255));
+        labelEndereco.setText("Endereço:");
 
         campoEndereco.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoEndereco.setForeground(new java.awt.Color(0, 0, 0));
@@ -262,6 +264,13 @@ public class CadastroProfessor extends javax.swing.JFrame {
         labelBairro.setForeground(new java.awt.Color(255, 255, 255));
         labelBairro.setText("Bairro:");
 
+        campoNacionalidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoNacionalidade.setForeground(new java.awt.Color(0, 0, 0));
+
+        labelNacionalidade.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        labelNacionalidade.setForeground(new java.awt.Color(255, 255, 255));
+        labelNacionalidade.setText("Nacionalidade:");
+
         javax.swing.GroupLayout jPanelEnderecoLayout = new javax.swing.GroupLayout(jPanelEndereco);
         jPanelEndereco.setLayout(jPanelEnderecoLayout);
         jPanelEnderecoLayout.setHorizontalGroup(
@@ -285,9 +294,13 @@ public class CadastroProfessor extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEnderecoLayout.createSequentialGroup()
-                .addComponent(labelCidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(labelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelEnderecoLayout.createSequentialGroup()
+                .addComponent(labelNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(campoNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jPanelEnderecoLayout.setVerticalGroup(
             jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -309,8 +322,12 @@ public class CadastroProfessor extends javax.swing.JFrame {
                     .addComponent(campoNumero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(labelCidade2, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(labelEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanelEnderecoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(labelNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(campoNacionalidade, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
         content.add(jPanelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
@@ -724,6 +741,8 @@ public class CadastroProfessor extends javax.swing.JFrame {
             return;
         }
         String endereco = campoEndereco.getText();
+        String nacionalidade = campoNacionalidade.getText();
+        
         
         String formacao = campoFormacao.getText();
         String historicoProfissional = campoHistoricoProfissional.getText();
@@ -775,7 +794,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
         Genero genero = Genero.values()[indexGenero];
         CorRaca corRaca = CorRaca.values()[indexCorRaca];
         
-        Pessoa pessoa = new Pessoa(nome, cpf, rg, telefone, email, deficiencia, estadoCivil, ender, genero, corRaca);
+        Pessoa pessoa = new Pessoa(nome, cpf, rg, telefone, email, deficiencia, nacionalidade, estadoCivil, ender, genero, corRaca);
         Professor professor = new Professor(pessoa, formacao, historicoProfissional);
         
         try {
@@ -906,6 +925,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField campoEstado;
     private javax.swing.JTextArea campoFormacao;
     private javax.swing.JTextArea campoHistoricoProfissional;
+    private javax.swing.JTextField campoNacionalidade;
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoRG;
@@ -929,9 +949,10 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JLabel labelCPF;
     private javax.swing.JLabel labelCidade;
     private javax.swing.JLabel labelCidade1;
-    private javax.swing.JLabel labelCidade2;
     private javax.swing.JLabel labelDeficiencia;
     private javax.swing.JLabel labelEmail;
+    private javax.swing.JLabel labelEndereco;
+    private javax.swing.JLabel labelNacionalidade;
     private javax.swing.JLabel labelNome;
     private javax.swing.JLabel labelNumero;
     private javax.swing.JLabel labelRG;
