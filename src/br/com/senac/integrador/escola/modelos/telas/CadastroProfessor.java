@@ -5,15 +5,15 @@ import br.com.senac.integrador.modelos.enums.EstadoCivil;
 import br.com.senac.integrador.escola.modelos.auxiliares.Manager;
 import br.com.senac.integrador.escola.modelos.Pessoa;
 import br.com.senac.integrador.escola.modelos.Professor;
+import br.com.senac.integrador.escola.modelos.auxiliares.Placeholder;
+import br.com.senac.integrador.escola.modelos.auxiliares.Regex;
 import br.com.senac.integrador.escola.modelos.auxiliares.SQLManager;
 import br.com.senac.integrador.escola.modelos.enums.CorRaca;
 import br.com.senac.integrador.escola.modelos.enums.Genero;
 import java.awt.Color;
-import java.awt.Component;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.AbstractButton;
@@ -79,7 +79,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
         labelRG = new javax.swing.JLabel();
         campoRG = new javax.swing.JTextField();
         labelDeficiencia = new javax.swing.JLabel();
-        campoRG1 = new javax.swing.JTextField();
+        campoDeficiencia = new javax.swing.JTextField();
         jPanelFormacao = new javax.swing.JPanel();
         titleFormacao = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -109,7 +109,6 @@ public class CadastroProfessor extends javax.swing.JFrame {
         setTitle("Cadastrar Professor");
 
         background.setBackground(new java.awt.Color(255, 255, 255));
-        background.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         sidePanel.setBackground(new java.awt.Color(19, 16, 89));
         sidePanel.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -150,8 +149,6 @@ public class CadastroProfessor extends javax.swing.JFrame {
         );
 
         sidePanel.add(section, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, -1));
-
-        background.add(sidePanel, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 80, 210, 460));
 
         content.setBackground(new java.awt.Color(75, 97, 148));
         content.setAutoscrolls(true);
@@ -217,7 +214,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        content.add(jPanelEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 220, -1, -1));
+        content.add(jPanelEstadoCivil, new org.netbeans.lib.awtextra.AbsoluteConstraints(640, 220, -1, -1));
 
         jPanelEndereco.setBackground(new java.awt.Color(19, 16, 89));
 
@@ -250,7 +247,16 @@ public class CadastroProfessor extends javax.swing.JFrame {
         labelCidade1.setText("Estado:");
 
         campoEstado.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoEstado.setForeground(new java.awt.Color(0, 0, 0));
+        campoEstado.setForeground(new java.awt.Color(153, 153, 153));
+        campoEstado.setText("RS, SC, PR...");
+        campoEstado.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoEstadoFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoEstadoFocusLost(evt);
+            }
+        });
 
         labelBairro.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelBairro.setForeground(new java.awt.Color(255, 255, 255));
@@ -307,12 +313,21 @@ public class CadastroProfessor extends javax.swing.JFrame {
                     .addComponent(campoEndereco, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        content.add(jPanelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 220, -1, -1));
+        content.add(jPanelEndereco, new org.netbeans.lib.awtextra.AbsoluteConstraints(310, 220, -1, -1));
 
         jPanelPessoa.setBackground(new java.awt.Color(19, 16, 89));
 
         campoTelefone.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoTelefone.setForeground(new java.awt.Color(0, 0, 0));
+        campoTelefone.setForeground(new java.awt.Color(153, 153, 153));
+        campoTelefone.setText("XX (XXX) XXXXX-XXXX");
+        campoTelefone.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoTelefoneFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoTelefoneFocusLost(evt);
+            }
+        });
 
         campoEmail.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         campoEmail.setForeground(new java.awt.Color(0, 0, 0));
@@ -337,21 +352,39 @@ public class CadastroProfessor extends javax.swing.JFrame {
         campoNome.setForeground(new java.awt.Color(0, 0, 0));
 
         campoCPF.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoCPF.setForeground(new java.awt.Color(0, 0, 0));
+        campoCPF.setForeground(new java.awt.Color(153, 153, 153));
+        campoCPF.setText("XXX.XXX.XXX-XX");
+        campoCPF.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoCPFFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoCPFFocusLost(evt);
+            }
+        });
 
         labelRG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelRG.setForeground(new java.awt.Color(255, 255, 255));
         labelRG.setText("RG:");
 
         campoRG.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoRG.setForeground(new java.awt.Color(0, 0, 0));
+        campoRG.setForeground(new java.awt.Color(153, 153, 153));
+        campoRG.setText("X.XXX.XXX");
+        campoRG.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusGained(java.awt.event.FocusEvent evt) {
+                campoRGFocusGained(evt);
+            }
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                campoRGFocusLost(evt);
+            }
+        });
 
         labelDeficiencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         labelDeficiencia.setForeground(new java.awt.Color(255, 255, 255));
         labelDeficiencia.setText("Deficiência:");
 
-        campoRG1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        campoRG1.setForeground(new java.awt.Color(0, 0, 0));
+        campoDeficiencia.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        campoDeficiencia.setForeground(new java.awt.Color(0, 0, 0));
 
         javax.swing.GroupLayout jPanelPessoaLayout = new javax.swing.GroupLayout(jPanelPessoa);
         jPanelPessoa.setLayout(jPanelPessoaLayout);
@@ -366,14 +399,13 @@ public class CadastroProfessor extends javax.swing.JFrame {
                     .addComponent(labelNome, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(labelRG, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(campoNome)
-                        .addComponent(campoCPF)
-                        .addComponent(campoTelefone)
-                        .addComponent(campoEmail, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(campoRG, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoRG1, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGroup(jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(campoNome)
+                    .addComponent(campoCPF)
+                    .addComponent(campoTelefone)
+                    .addComponent(campoEmail)
+                    .addComponent(campoRG)
+                    .addComponent(campoDeficiencia)))
         );
         jPanelPessoaLayout.setVerticalGroup(
             jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -400,10 +432,10 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanelPessoaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(labelDeficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(campoRG1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(campoDeficiencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
         );
 
-        content.add(jPanelPessoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(390, 220, -1, -1));
+        content.add(jPanelPessoa, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
 
         jPanelFormacao.setBackground(new java.awt.Color(19, 16, 89));
 
@@ -437,15 +469,18 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
         );
 
-        content.add(jPanelFormacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 30, -1, 160));
+        content.add(jPanelFormacao, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 30, -1, 160));
 
+        botaoCadastrar.setBackground(new java.awt.Color(19, 16, 89));
+        botaoCadastrar.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        botaoCadastrar.setForeground(new java.awt.Color(255, 255, 255));
         botaoCadastrar.setText("Cadastrar");
         botaoCadastrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botaoCadastrarActionPerformed(evt);
             }
         });
-        content.add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(680, 420, -1, -1));
+        content.add(botaoCadastrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(760, 450, -1, -1));
 
         jPanelCorRaca.setBackground(new java.awt.Color(19, 16, 89));
 
@@ -512,7 +547,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        content.add(jPanelCorRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 220, -1, -1));
+        content.add(jPanelCorRaca, new org.netbeans.lib.awtextra.AbsoluteConstraints(540, 220, -1, -1));
 
         jPanelGenero.setBackground(new java.awt.Color(19, 16, 89));
 
@@ -561,7 +596,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        content.add(jPanelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 220, -1, -1));
+        content.add(jPanelGenero, new org.netbeans.lib.awtextra.AbsoluteConstraints(770, 220, -1, -1));
 
         jPanel1.setBackground(new java.awt.Color(19, 16, 89));
 
@@ -594,9 +629,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 123, Short.MAX_VALUE))
         );
 
-        content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(430, 30, 340, 160));
-
-        background.add(content, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, 830, 460));
+        content.add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 30, 340, 160));
 
         title.setBackground(new java.awt.Color(10, 23, 82));
 
@@ -609,14 +642,12 @@ public class CadastroProfessor extends javax.swing.JFrame {
         title.setLayout(titleLayout);
         titleLayout.setHorizontalGroup(
             titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(titleMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 830, Short.MAX_VALUE)
+            .addComponent(titleMain, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         titleLayout.setVerticalGroup(
             titleLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(titleMain, javax.swing.GroupLayout.DEFAULT_SIZE, 80, Short.MAX_VALUE)
         );
-
-        background.add(title, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 0, 830, 80));
 
         jPanel2.setBackground(new java.awt.Color(255, 153, 0));
 
@@ -631,7 +662,29 @@ public class CadastroProfessor extends javax.swing.JFrame {
             .addGap(0, 80, Short.MAX_VALUE)
         );
 
-        background.add(jPanel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 210, 80));
+        javax.swing.GroupLayout backgroundLayout = new javax.swing.GroupLayout(background);
+        background.setLayout(backgroundLayout);
+        backgroundLayout.setHorizontalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(title, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addComponent(sidePanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, 0)
+                .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 888, Short.MAX_VALUE))
+        );
+        backgroundLayout.setVerticalGroup(
+            backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(backgroundLayout.createSequentialGroup()
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(title, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(backgroundLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(content, javax.swing.GroupLayout.DEFAULT_SIZE, 500, Short.MAX_VALUE)
+                    .addComponent(sidePanel, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+        );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -641,39 +694,55 @@ public class CadastroProfessor extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, 531, Short.MAX_VALUE)
+            .addComponent(background, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
             
     private void botaoCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botaoCadastrarActionPerformed
-        Component[] componentsPessoa = jPanelPessoa.getComponents();
-        Component[] componentsEndereco = jPanelEndereco.getComponents();
         
         ArrayList<AbstractButton> buttonsEstadoCivil = Collections.list(grupoBotoesEstadoCivil.getElements());
         ArrayList<AbstractButton> buttonsCorRaca = Collections.list(grupoBotoesCorRaca.getElements());
         ArrayList<AbstractButton> buttonsGenero = Collections.list(grupoBotoesGenero.getElements());
         
-        List<String> inputsPessoa = Manager.getListInputs(componentsPessoa);
-        List<String> inputsEndereco = Manager.getListInputs(componentsEndereco);
+        String nome = campoNome.getText();
+        String cpf = campoCPF.getText();
+        String rg = campoRG.getText();
+        String telefone = campoTelefone.getText();
+        String email = campoEmail.getText();
+        String deficiencia = campoDeficiencia.getText();
         
-        // Variáveis
-        String nome = inputsPessoa.get(0);
-        String cpf = inputsPessoa.get(1);
-        String rg = inputsPessoa.get(2);
-        String telefone = inputsPessoa.get(3);
-        String email = inputsPessoa.get(4);
-        String deficiencia = inputsPessoa.get(5);
-        
-        String estado = inputsEndereco.get(0);
-        String cidade = inputsEndereco.get(1);
-        String bairro = inputsEndereco.get(2);
-        int numero = Integer.parseInt(inputsEndereco.get(3));
-        String endereco = inputsEndereco.get(4);
+        String estado = campoEstado.getText();
+        String cidade = campoCidade.getText();
+        String bairro = campoBairro.getText();
+        int numero;
+        try {
+            numero = Integer.parseInt(campoNumero.getText());
+        } catch (NumberFormatException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
+        }
+        String endereco = campoEndereco.getText();
         
         String formacao = campoFormacao.getText();
         String historicoProfissional = campoHistoricoProfissional.getText();
+        
+        
+        try {
+            if(!cpf.matches(Regex.CPF)) {
+                throw new IllegalArgumentException("CPF formatado incorretamente.");
+            } else if(!telefone.matches(Regex.TELEFONE)) {
+                throw new IllegalArgumentException("Telefone formatado incorretamente.");
+            } else if(!rg.matches(Regex.RG)) {
+                throw new IllegalArgumentException("RG formatado incorretamente.");
+            } else if(!(estado.length() == 2)) {
+                throw new IllegalArgumentException("Estado formatado incorretamente.");
+            }
+        } catch (IllegalArgumentException e) {
+            JOptionPane.showMessageDialog(null, e.getMessage());
+            return;
+        }
         
         boolean camposInvalidos = 
                 nome.isBlank() ||
@@ -690,12 +759,12 @@ public class CadastroProfessor extends javax.swing.JFrame {
                 historicoProfissional.isBlank();
         try {
             if(camposInvalidos) {
-                throw new IllegalArgumentException("Campos preenchidos incorretamente.");
+                throw new IllegalArgumentException("Há campos preenchidos incorretamente.");
             }
         } catch(IllegalArgumentException e) {
             JOptionPane.showMessageDialog(null, e.getMessage());
         }
-        
+        System.out.println(telefone);
         int indexEstadoCivil = Manager.getIndexOfButtonSelectByList(buttonsEstadoCivil);
         int indexCorRaca = Manager.getIndexOfButtonSelectByList(buttonsCorRaca);
         int indexGenero = Manager.getIndexOfButtonSelectByList(buttonsGenero);
@@ -715,15 +784,68 @@ public class CadastroProfessor extends javax.swing.JFrame {
             Logger.getLogger(CadastroProfessor.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_botaoCadastrarActionPerformed
-
+    private void campoFocusGained(java.awt.event.FocusEvent evt, javax.swing.JTextField textField, String placeholder) {
+        if(textField.getText().equals(placeholder)) {
+            textField.setText("");
+        }
+        textField.setForeground(Color.BLACK);
+    }
+    private void campoFocusLost(java.awt.event.FocusEvent evt, javax.swing.JTextField textField, String placeholder) {
+        if(textField.getText().isBlank()) {
+            textField.setText(placeholder);
+            textField.setForeground(new Color(153,153,153));
+            return;
+        }
+        textField.setForeground(Color.BLACK);
+    }
+    
+    /**
+     * Altera a cor do item do sidePanel quando o mouse passa em cima.
+     * @param evt 
+     */
     private void sectionMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sectionMouseEntered
         section.setBackground(new Color(15, 34, 61));
     }//GEN-LAST:event_sectionMouseEntered
-
+    /**
+     * Retorna para a cor original do item do sidePanel quando o mouse sai de cima dele.
+     * @param evt 
+     */
     private void sectionMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_sectionMouseExited
         section.setBackground(new Color(19, 16, 89));
     }//GEN-LAST:event_sectionMouseExited
+    
+    private void campoTelefoneFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusGained
+        campoFocusGained(evt, campoTelefone, Placeholder.TELEFONE);
+    }//GEN-LAST:event_campoTelefoneFocusGained
 
+    private void campoTelefoneFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoTelefoneFocusLost
+        campoFocusLost(evt, campoTelefone, Placeholder.TELEFONE);
+    }//GEN-LAST:event_campoTelefoneFocusLost
+
+    private void campoCPFFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCPFFocusGained
+        campoFocusGained(evt, campoCPF, Placeholder.CPF);
+    }//GEN-LAST:event_campoCPFFocusGained
+
+    private void campoCPFFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoCPFFocusLost
+        campoFocusLost(evt, campoCPF, Placeholder.CPF);
+    }//GEN-LAST:event_campoCPFFocusLost
+
+    private void campoRGFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusGained
+        campoFocusGained(evt, campoRG, Placeholder.RG);
+    }//GEN-LAST:event_campoRGFocusGained
+
+    private void campoRGFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoRGFocusLost
+        campoFocusLost(evt, campoRG, Placeholder.RG);
+    }//GEN-LAST:event_campoRGFocusLost
+
+    private void campoEstadoFocusGained(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEstadoFocusGained
+        campoFocusGained(evt, campoEstado, Placeholder.ESTADO);
+    }//GEN-LAST:event_campoEstadoFocusGained
+
+    private void campoEstadoFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_campoEstadoFocusLost
+        campoFocusLost(evt, campoEstado, Placeholder.ESTADO);
+    }//GEN-LAST:event_campoEstadoFocusLost
+    
     /**
      * @param args the command line arguments
      */
@@ -735,7 +857,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Windows".equals(info.getName())) {
+                if ("Nimbus".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
@@ -778,6 +900,7 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField campoBairro;
     private javax.swing.JTextField campoCPF;
     private javax.swing.JTextField campoCidade;
+    private javax.swing.JTextField campoDeficiencia;
     private javax.swing.JTextField campoEmail;
     private javax.swing.JTextField campoEndereco;
     private javax.swing.JTextField campoEstado;
@@ -786,7 +909,6 @@ public class CadastroProfessor extends javax.swing.JFrame {
     private javax.swing.JTextField campoNome;
     private javax.swing.JTextField campoNumero;
     private javax.swing.JTextField campoRG;
-    private javax.swing.JTextField campoRG1;
     private javax.swing.JTextField campoTelefone;
     private javax.swing.JPanel content;
     private javax.swing.ButtonGroup grupoBotoesCorRaca;

@@ -37,7 +37,7 @@
     </DimensionLayout>
     <DimensionLayout dim="1">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Component id="background" alignment="0" pref="531" max="32767" attributes="0"/>
+          <Component id="background" min="-2" max="-2" attributes="0"/>
       </Group>
     </DimensionLayout>
   </Layout>
@@ -49,8 +49,35 @@
         </Property>
       </Properties>
 
-      <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
-        <Property name="useNullLayout" type="boolean" value="false"/>
+      <Layout>
+        <DimensionLayout dim="0">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                  <Component id="title" max="32767" attributes="0"/>
+              </Group>
+              <Group type="102" attributes="0">
+                  <Component id="sidePanel" min="-2" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="0" max="-2" attributes="0"/>
+                  <Component id="content" pref="888" max="32767" attributes="0"/>
+              </Group>
+          </Group>
+        </DimensionLayout>
+        <DimensionLayout dim="1">
+          <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="102" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="jPanel2" min="-2" max="-2" attributes="0"/>
+                      <Component id="title" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="103" groupAlignment="0" attributes="0">
+                      <Component id="content" pref="500" max="32767" attributes="0"/>
+                      <Component id="sidePanel" max="32767" attributes="0"/>
+                  </Group>
+              </Group>
+          </Group>
+        </DimensionLayout>
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JPanel" name="sidePanel">
@@ -59,11 +86,6 @@
               <Color blue="59" green="10" red="13" type="rgb"/>
             </Property>
           </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="80" width="210" height="460"/>
-            </Constraint>
-          </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
             <Property name="useNullLayout" type="boolean" value="false"/>
@@ -140,11 +162,6 @@
             </Property>
             <Property name="autoscrolls" type="boolean" value="true"/>
           </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="80" width="830" height="460"/>
-            </Constraint>
-          </Constraints>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout">
             <Property name="useNullLayout" type="boolean" value="false"/>
@@ -158,7 +175,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="140" y="220" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="640" y="220" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -286,7 +303,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="610" y="220" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="310" y="220" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -446,9 +463,14 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
+                      <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="RS, SC, PR..."/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEstadoFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoEstadoFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelBairro">
                   <Properties>
@@ -471,7 +493,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="390" y="220" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="40" y="220" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -488,15 +510,13 @@
                               <Component id="labelRG" alignment="0" min="-2" pref="90" max="-2" attributes="0"/>
                           </Group>
                           <EmptySpace max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="103" alignment="0" groupAlignment="0" max="-2" attributes="0">
-                                  <Component id="campoNome" max="32767" attributes="0"/>
-                                  <Component id="campoCPF" max="32767" attributes="0"/>
-                                  <Component id="campoTelefone" max="32767" attributes="0"/>
-                                  <Component id="campoEmail" min="-2" pref="100" max="-2" attributes="0"/>
-                              </Group>
-                              <Component id="campoRG" min="-2" pref="100" max="-2" attributes="0"/>
-                              <Component id="campoRG1" min="-2" pref="100" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="campoNome" max="32767" attributes="0"/>
+                              <Component id="campoCPF" max="32767" attributes="0"/>
+                              <Component id="campoTelefone" max="32767" attributes="0"/>
+                              <Component id="campoEmail" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campoRG" alignment="0" max="32767" attributes="0"/>
+                              <Component id="campoDeficiencia" alignment="0" max="32767" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -531,7 +551,7 @@
                           <EmptySpace max="-2" attributes="0"/>
                           <Group type="103" groupAlignment="3" attributes="0">
                               <Component id="labelDeficiencia" alignment="3" min="-2" pref="28" max="-2" attributes="0"/>
-                              <Component id="campoRG1" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="campoDeficiencia" alignment="3" min="-2" max="-2" attributes="0"/>
                           </Group>
                       </Group>
                   </Group>
@@ -544,9 +564,14 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
+                      <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="XX (XXX) XXXXX-XXXX"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTelefoneFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoTelefoneFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JTextField" name="campoEmail">
                   <Properties>
@@ -618,9 +643,14 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
+                      <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="XXX.XXX.XXX-XX"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCPFFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoCPFFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelRG">
                   <Properties>
@@ -639,9 +669,14 @@
                       <Font name="Segoe UI" size="14" style="0"/>
                     </Property>
                     <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                      <Color blue="0" green="0" red="0" type="rgb"/>
+                      <Color blue="99" green="99" red="99" type="rgb"/>
                     </Property>
+                    <Property name="text" type="java.lang.String" value="X.XXX.XXX"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="focusGained" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoRGFocusGained"/>
+                    <EventHandler event="focusLost" listener="java.awt.event.FocusListener" parameters="java.awt.event.FocusEvent" handler="campoRGFocusLost"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JLabel" name="labelDeficiencia">
                   <Properties>
@@ -654,7 +689,7 @@
                     <Property name="text" type="java.lang.String" value="Defici&#xea;ncia:"/>
                   </Properties>
                 </Component>
-                <Component class="javax.swing.JTextField" name="campoRG1">
+                <Component class="javax.swing.JTextField" name="campoDeficiencia">
                   <Properties>
                     <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                       <Font name="Segoe UI" size="14" style="0"/>
@@ -674,7 +709,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="80" y="30" width="-1" height="160"/>
+                  <AbsoluteConstraints x="100" y="30" width="-1" height="160"/>
                 </Constraint>
               </Constraints>
 
@@ -738,6 +773,15 @@
             </Container>
             <Component class="javax.swing.JButton" name="botaoCadastrar">
               <Properties>
+                <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="59" green="10" red="13" type="rgb"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Segoe UI" size="14" style="1"/>
+                </Property>
+                <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="ff" green="ff" red="ff" type="rgb"/>
+                </Property>
                 <Property name="text" type="java.lang.String" value="Cadastrar"/>
               </Properties>
               <Events>
@@ -745,7 +789,7 @@
               </Events>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="680" y="420" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="760" y="450" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
             </Component>
@@ -757,7 +801,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="40" y="220" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="540" y="220" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -899,7 +943,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="270" y="220" width="-1" height="-1"/>
+                  <AbsoluteConstraints x="770" y="220" width="-1" height="-1"/>
                 </Constraint>
               </Constraints>
 
@@ -1001,7 +1045,7 @@
               </Properties>
               <Constraints>
                 <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-                  <AbsoluteConstraints x="430" y="30" width="340" height="160"/>
+                  <AbsoluteConstraints x="450" y="30" width="340" height="160"/>
                 </Constraint>
               </Constraints>
 
@@ -1070,16 +1114,11 @@
               <Color blue="52" green="17" red="a" type="rgb"/>
             </Property>
           </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="210" y="0" width="830" height="80"/>
-            </Constraint>
-          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
               <Group type="103" groupAlignment="0" attributes="0">
-                  <Component id="titleMain" alignment="1" pref="830" max="32767" attributes="0"/>
+                  <Component id="titleMain" alignment="1" max="32767" attributes="0"/>
               </Group>
             </DimensionLayout>
             <DimensionLayout dim="1">
@@ -1109,11 +1148,6 @@
               <Color blue="0" green="99" red="ff" type="rgb"/>
             </Property>
           </Properties>
-          <Constraints>
-            <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-              <AbsoluteConstraints x="0" y="0" width="210" height="80"/>
-            </Constraint>
-          </Constraints>
 
           <Layout>
             <DimensionLayout dim="0">
