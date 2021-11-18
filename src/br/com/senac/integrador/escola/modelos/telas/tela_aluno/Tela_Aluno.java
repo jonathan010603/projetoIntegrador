@@ -168,6 +168,9 @@ public class Tela_Aluno extends javax.swing.JFrame {
         nav_desempenho.setBackground(new java.awt.Color(19, 16, 89));
         nav_desempenho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_desempenho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_desempenhoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 nav_desempenhoMouseEntered(evt);
             }
@@ -201,6 +204,9 @@ public class Tela_Aluno extends javax.swing.JFrame {
         nav_frequencia.setBackground(new java.awt.Color(19, 16, 89));
         nav_frequencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_frequencia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_frequenciaMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 nav_frequenciaMouseEntered(evt);
             }
@@ -234,6 +240,9 @@ public class Tela_Aluno extends javax.swing.JFrame {
         nav_solicitacoes.setBackground(new java.awt.Color(19, 16, 89));
         nav_solicitacoes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_solicitacoes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_solicitacoesMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 nav_solicitacoesMouseEntered(evt);
             }
@@ -267,6 +276,9 @@ public class Tela_Aluno extends javax.swing.JFrame {
         nav_ocorrencias.setBackground(new java.awt.Color(19, 16, 89));
         nav_ocorrencias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_ocorrencias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_ocorrenciasMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 nav_ocorrenciasMouseEntered(evt);
             }
@@ -336,6 +348,9 @@ public class Tela_Aluno extends javax.swing.JFrame {
         nav_contato.setBackground(new java.awt.Color(19, 16, 89));
         nav_contato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_contato.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_contatoMouseClicked(evt);
+            }
             public void mouseEntered(java.awt.event.MouseEvent evt) {
                 nav_contatoMouseEntered(evt);
             }
@@ -522,6 +537,11 @@ public class Tela_Aluno extends javax.swing.JFrame {
     
     page_inicio inicio = new page_inicio();
     page_perfil perfil = new page_perfil();
+    page_desempenho desempenho = new page_desempenho();
+    page_frequencia frequencia = new page_frequencia();
+    page_ocorrencias ocorrencias = new page_ocorrencias();
+    page_solicitacoes solicitacoes = new page_solicitacoes();
+    page_contato contato = new page_contato();
     
     private void open_page(Component comp) {
         renderer.removeAll();
@@ -535,6 +555,26 @@ public class Tela_Aluno extends javax.swing.JFrame {
     private void nav_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_perfilMouseClicked
         open_page(perfil);
     }//GEN-LAST:event_nav_perfilMouseClicked
+
+    private void nav_desempenhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_desempenhoMouseClicked
+        open_page(desempenho);
+    }//GEN-LAST:event_nav_desempenhoMouseClicked
+
+    private void nav_frequenciaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_frequenciaMouseClicked
+        open_page(frequencia);
+    }//GEN-LAST:event_nav_frequenciaMouseClicked
+
+    private void nav_ocorrenciasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_ocorrenciasMouseClicked
+        open_page(ocorrencias);
+    }//GEN-LAST:event_nav_ocorrenciasMouseClicked
+
+    private void nav_solicitacoesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_solicitacoesMouseClicked
+        open_page(solicitacoes);
+    }//GEN-LAST:event_nav_solicitacoesMouseClicked
+
+    private void nav_contatoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_contatoMouseClicked
+        open_page(contato);
+    }//GEN-LAST:event_nav_contatoMouseClicked
 
     /**
      * @param args the command line arguments
