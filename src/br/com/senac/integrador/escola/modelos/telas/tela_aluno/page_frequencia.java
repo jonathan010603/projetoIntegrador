@@ -46,9 +46,9 @@ public class page_frequencia extends javax.swing.JInternalFrame {
         jLabel3 = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 450));
+        setPreferredSize(new java.awt.Dimension(590, 440));
 
-        tab_inicio.setBackground(new java.awt.Color(94, 113, 171));
+        tab_inicio.setBackground(new java.awt.Color(67, 148, 222));
 
         comboBox_Ano.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
@@ -175,9 +175,9 @@ public class page_frequencia extends javax.swing.JInternalFrame {
         tab_inicioLayout.setVerticalGroup(
             tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tab_inicioLayout.createSequentialGroup()
-                .addGap(8, 8, 8)
+                .addContainerGap()
                 .addComponent(comboBox_Ano, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 9, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel1)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)

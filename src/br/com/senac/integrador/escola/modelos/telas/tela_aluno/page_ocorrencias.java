@@ -50,9 +50,9 @@ public class page_ocorrencias extends javax.swing.JInternalFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 450));
+        setPreferredSize(new java.awt.Dimension(590, 440));
 
-        tab_inicio.setBackground(new java.awt.Color(94, 113, 171));
+        tab_inicio.setBackground(new java.awt.Color(67, 148, 222));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));

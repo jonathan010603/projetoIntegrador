@@ -5,23 +5,37 @@
  */
 package br.com.senac.integrador.escola.modelos.telas.tela_aluno;
 
+import br.com.senac.integrador.escola.modelos.auxiliares.SQLManager;
 import java.awt.Color;
 import java.awt.Component;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.BorderFactory;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.border.Border;
 
 /**
  *
  * @author Jonathan
  */
 public class Tela_Aluno extends javax.swing.JFrame {
-
+    int idPessoa;
+    int idEstudante;
+    
     /**
      * Creates new form Tela_Aluno
      */
-    public Tela_Aluno() {
+    public Tela_Aluno() throws SQLException {
         initComponents();
+        getTopBarData(1, 1);
         open_page(inicio);
+        
     }
 
     /**
@@ -33,11 +47,6 @@ public class Tela_Aluno extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        top_fixed_bar = new javax.swing.JPanel();
-        top_bar_name = new javax.swing.JLabel();
-        top_bar_class = new javax.swing.JLabel();
-        button_close = new javax.swing.JLabel();
-        button_logout = new javax.swing.JLabel();
         navbar = new javax.swing.JPanel();
         nav_inicio = new javax.swing.JPanel();
         label_inicio = new javax.swing.JLabel();
@@ -53,84 +62,26 @@ public class Tela_Aluno extends javax.swing.JFrame {
         label_ocorrencias3 = new javax.swing.JLabel();
         nav_material = new javax.swing.JPanel();
         label_ocorrencias4 = new javax.swing.JLabel();
+        nav_inicio3 = new javax.swing.JPanel();
+        label_inicio3 = new javax.swing.JLabel();
+        nav_inicio4 = new javax.swing.JPanel();
+        label_inicio4 = new javax.swing.JLabel();
         renderer = new javax.swing.JDesktopPane();
+        jPanel1 = new javax.swing.JPanel();
+        jLabel1 = new javax.swing.JLabel();
+        topBar_nome = new javax.swing.JLabel();
+        topBar_curso = new javax.swing.JLabel();
+        topBar_turma = new javax.swing.JLabel();
+        button_close = new javax.swing.JLabel();
+        button_logout = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
         getContentPane().setLayout(null);
 
-        top_fixed_bar.setBackground(new java.awt.Color(10, 23, 82));
-        top_fixed_bar.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
-            public void mouseDragged(java.awt.event.MouseEvent evt) {
-                top_fixed_barMouseDragged(evt);
-            }
-        });
-        top_fixed_bar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                top_fixed_barMousePressed(evt);
-            }
-        });
+        navbar.setBackground(new java.awt.Color(54, 164, 255));
 
-        top_bar_name.setFont(new java.awt.Font("Segoe UI Semibold", 0, 16)); // NOI18N
-        top_bar_name.setForeground(new java.awt.Color(255, 255, 255));
-        top_bar_name.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        top_bar_name.setText("Jonathan da Silva");
-
-        top_bar_class.setFont(new java.awt.Font("Tahoma", 0, 16)); // NOI18N
-        top_bar_class.setForeground(new java.awt.Color(255, 255, 255));
-        top_bar_class.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
-        top_bar_class.setText("Turma 506");
-
-        button_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_close.png"))); // NOI18N
-        button_close.setText("jLabel1");
-        button_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        button_close.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                button_closeMouseClicked(evt);
-            }
-        });
-
-        button_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_logout.png"))); // NOI18N
-        button_logout.setText("jLabel2");
-        button_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-
-        javax.swing.GroupLayout top_fixed_barLayout = new javax.swing.GroupLayout(top_fixed_bar);
-        top_fixed_bar.setLayout(top_fixed_barLayout);
-        top_fixed_barLayout.setHorizontalGroup(
-            top_fixed_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(top_fixed_barLayout.createSequentialGroup()
-                .addContainerGap(140, Short.MAX_VALUE)
-                .addGroup(top_fixed_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(top_bar_class, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(top_bar_name, javax.swing.GroupLayout.DEFAULT_SIZE, 484, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(button_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(button_close, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
-        );
-        top_fixed_barLayout.setVerticalGroup(
-            top_fixed_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-            .addGroup(top_fixed_barLayout.createSequentialGroup()
-                .addContainerGap(17, Short.MAX_VALUE)
-                .addComponent(top_bar_name, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(top_bar_class)
-                .addGap(15, 15, 15))
-            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, top_fixed_barLayout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(top_fixed_barLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(button_close, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(button_logout, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-
-        getContentPane().add(top_fixed_bar);
-        top_fixed_bar.setBounds(0, 0, 730, 80);
-
-        navbar.setBackground(new java.awt.Color(19, 16, 89));
-
-        nav_inicio.setBackground(new java.awt.Color(19, 16, 89));
+        nav_inicio.setBackground(new java.awt.Color(54, 164, 255));
         nav_inicio.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_inicio.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -166,7 +117,7 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        nav_desempenho.setBackground(new java.awt.Color(19, 16, 89));
+        nav_desempenho.setBackground(new java.awt.Color(54, 164, 255));
         nav_desempenho.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_desempenho.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -202,7 +153,7 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        nav_frequencia.setBackground(new java.awt.Color(19, 16, 89));
+        nav_frequencia.setBackground(new java.awt.Color(54, 164, 255));
         nav_frequencia.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_frequencia.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -238,7 +189,7 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        nav_ocorrencias.setBackground(new java.awt.Color(19, 16, 89));
+        nav_ocorrencias.setBackground(new java.awt.Color(54, 164, 255));
         nav_ocorrencias.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_ocorrencias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -274,7 +225,7 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        nav_perfil.setBackground(new java.awt.Color(19, 16, 89));
+        nav_perfil.setBackground(new java.awt.Color(54, 164, 255));
         nav_perfil.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_perfil.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -310,7 +261,7 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        nav_contato.setBackground(new java.awt.Color(19, 16, 89));
+        nav_contato.setBackground(new java.awt.Color(54, 164, 255));
         nav_contato.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_contato.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -329,7 +280,24 @@ public class Tela_Aluno extends javax.swing.JFrame {
         label_ocorrencias3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_contato.png"))); // NOI18N
         label_ocorrencias3.setText("Contato");
 
-        nav_material.setBackground(new java.awt.Color(19, 16, 89));
+        javax.swing.GroupLayout nav_contatoLayout = new javax.swing.GroupLayout(nav_contato);
+        nav_contato.setLayout(nav_contatoLayout);
+        nav_contatoLayout.setHorizontalGroup(
+            nav_contatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nav_contatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_ocorrencias3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        nav_contatoLayout.setVerticalGroup(
+            nav_contatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nav_contatoLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_ocorrencias3)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        nav_material.setBackground(new java.awt.Color(54, 164, 255));
         nav_material.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         nav_material.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -365,23 +333,75 @@ public class Tela_Aluno extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        javax.swing.GroupLayout nav_contatoLayout = new javax.swing.GroupLayout(nav_contato);
-        nav_contato.setLayout(nav_contatoLayout);
-        nav_contatoLayout.setHorizontalGroup(
-            nav_contatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nav_contatoLayout.createSequentialGroup()
+        nav_inicio3.setBackground(new java.awt.Color(54, 164, 255));
+        nav_inicio3.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nav_inicio3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_inicio3MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nav_inicio3MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nav_inicio3MouseExited(evt);
+            }
+        });
+
+        label_inicio3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        label_inicio3.setForeground(new java.awt.Color(255, 255, 255));
+        label_inicio3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_inicio.png"))); // NOI18N
+        label_inicio3.setText("Turma");
+
+        javax.swing.GroupLayout nav_inicio3Layout = new javax.swing.GroupLayout(nav_inicio3);
+        nav_inicio3.setLayout(nav_inicio3Layout);
+        nav_inicio3Layout.setHorizontalGroup(
+            nav_inicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nav_inicio3Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_ocorrencias3, javax.swing.GroupLayout.PREFERRED_SIZE, 90, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_inicio3, javax.swing.GroupLayout.PREFERRED_SIZE, 86, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(nav_material, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
-        nav_contatoLayout.setVerticalGroup(
-            nav_contatoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(nav_contatoLayout.createSequentialGroup()
+        nav_inicio3Layout.setVerticalGroup(
+            nav_inicio3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nav_inicio3Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(label_inicio3)
+                .addContainerGap())
+        );
+
+        nav_inicio4.setBackground(new java.awt.Color(54, 164, 255));
+        nav_inicio4.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        nav_inicio4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                nav_inicio4MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                nav_inicio4MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                nav_inicio4MouseExited(evt);
+            }
+        });
+
+        label_inicio4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        label_inicio4.setForeground(new java.awt.Color(255, 255, 255));
+        label_inicio4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_inicio.png"))); // NOI18N
+        label_inicio4.setText("Carteira Virtual");
+
+        javax.swing.GroupLayout nav_inicio4Layout = new javax.swing.GroupLayout(nav_inicio4);
+        nav_inicio4.setLayout(nav_inicio4Layout);
+        nav_inicio4Layout.setHorizontalGroup(
+            nav_inicio4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, nav_inicio4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(label_ocorrencias3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(nav_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(label_inicio4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+        nav_inicio4Layout.setVerticalGroup(
+            nav_inicio4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(nav_inicio4Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(label_inicio4)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
@@ -389,36 +409,45 @@ public class Tela_Aluno extends javax.swing.JFrame {
         navbar.setLayout(navbarLayout);
         navbarLayout.setHorizontalGroup(
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
-                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(nav_contato, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nav_ocorrencias, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nav_frequencia, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nav_desempenho, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nav_perfil, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(nav_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(navbarLayout.createSequentialGroup()
+                .addGroup(navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(nav_contato, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_ocorrencias, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_frequencia, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_desempenho, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_inicio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_material, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_inicio3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(nav_inicio4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         navbarLayout.setVerticalGroup(
             navbarLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(navbarLayout.createSequentialGroup()
-                .addGap(80, 80, 80)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, navbarLayout.createSequentialGroup()
+                .addContainerGap(28, Short.MAX_VALUE)
                 .addComponent(nav_inicio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nav_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nav_inicio3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(nav_inicio4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nav_desempenho, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nav_frequencia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(nav_ocorrencias, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(nav_contato, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(nav_material, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(30, 30, 30))
         );
 
         getContentPane().add(navbar);
-        navbar.setBounds(0, 0, 140, 530);
+        navbar.setBounds(0, 0, 140, 650);
 
         javax.swing.GroupLayout rendererLayout = new javax.swing.GroupLayout(renderer);
         renderer.setLayout(rendererLayout);
@@ -428,25 +457,147 @@ public class Tela_Aluno extends javax.swing.JFrame {
         );
         rendererLayout.setVerticalGroup(
             rendererLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 450, Short.MAX_VALUE)
+            .addGap(0, 440, Short.MAX_VALUE)
         );
 
         getContentPane().add(renderer);
-        renderer.setBounds(140, 80, 590, 450);
+        renderer.setBounds(140, 90, 590, 440);
 
-        setSize(new java.awt.Dimension(728, 525));
+        jPanel1.setBackground(new java.awt.Color(232, 180, 88));
+
+        jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_person.png"))); // NOI18N
+        jLabel1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jLabel1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel1MouseClicked(evt);
+            }
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                jLabel1MouseEntered(evt);
+            }
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jLabel1MouseExited(evt);
+            }
+        });
+
+        topBar_nome.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        topBar_nome.setForeground(new java.awt.Color(255, 255, 255));
+        topBar_nome.setText(" ");
+
+        topBar_curso.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        topBar_curso.setForeground(new java.awt.Color(255, 255, 255));
+        topBar_curso.setText(" ");
+
+        topBar_turma.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        topBar_turma.setForeground(new java.awt.Color(255, 255, 255));
+        topBar_turma.setText(" ");
+
+        button_close.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_close.png"))); // NOI18N
+        button_close.setText("jLabel1");
+        button_close.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        button_close.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                button_closeMouseClicked(evt);
+            }
+        });
+
+        button_logout.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_logout.png"))); // NOI18N
+        button_logout.setText("jLabel2");
+        button_logout.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(topBar_nome, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(topBar_curso, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                    .addComponent(topBar_turma, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(button_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(button_close, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(topBar_nome)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(topBar_curso)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(topBar_turma))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(button_logout, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGap(1, 1, 1)
+                                .addComponent(button_close, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                        .addGap(25, 25, 25)))
+                .addContainerGap())
+        );
+
+        getContentPane().add(jPanel1);
+        jPanel1.setBounds(140, 0, 590, 90);
+
+        setSize(new java.awt.Dimension(728, 565));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private static boolean isSQLSet = false;
+    private static Connection connection;
+    
+    private static Connection createConnection() throws SQLException {
+        if(isSQLSet) {
+            return connection;
+        }
+        //String username = JOptionPane.showInputDialog("Insira o usuário do banco de dados.");
+        //String password = JOptionPane.showInputDialog("Insira a senha do banco de dados.");
+        
+        String username = "root";
+        String password = "inserida";
+        
+        String url = "jdbc:mysql://localhost/appescola";
+        isSQLSet = true;
+        connection = DriverManager.getConnection(url, username, password);
+        return connection;
+    }
+  
+    private void getTopBarData(int idPessoa, int idEstudante) throws SQLException {        
+        connection = createConnection();
+        Statement statement_pes = connection.createStatement();
+        Statement statement_est = connection.createStatement();
+        Statement statement_tur = connection.createStatement();
+        
+        ResultSet dados_pes = statement_pes.executeQuery("SELECT nome from pessoa where idPessoa = " + idPessoa);    
+        ResultSet dados_est = statement_est.executeQuery("SELECT curso from estudante where idEstudante = " + idEstudante);    
+        ResultSet dados_tur = statement_tur.executeQuery("SELECT idTurma from turma where idEstudante = " + idEstudante);    
+        
+        dados_pes.next();
+        dados_est.next();
+        dados_tur.next();
+        
+        topBar_nome.setText(dados_pes.getString("nome"));
+        topBar_curso.setText(dados_est.getString("curso"));
+        topBar_turma.setText("Turma " + (dados_tur.getString("idTurma")));
+    }
     
     public void setNavColor (JPanel p)
     {
-        p.setBackground(new Color(15, 34, 61));
+        p.setBackground(new Color(232,180,88));
     }
 
     public void resetNavColor (JPanel p)
     {
-        p.setBackground(new Color(19, 16, 89));
+        p.setBackground(new Color(54,164,255));
     }
     
     private void nav_inicioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicioMouseEntered
@@ -507,17 +658,6 @@ public class Tela_Aluno extends javax.swing.JFrame {
 
  
     int x, y;
-    private void top_fixed_barMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_top_fixed_barMousePressed
-        int x = evt.getX();
-        int y = evt.getY();
-    }//GEN-LAST:event_top_fixed_barMousePressed
-
-    private void top_fixed_barMouseDragged(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_top_fixed_barMouseDragged
-        int xx = evt.getXOnScreen();
-        int yy = evt.getYOnScreen();
-        this.setLocation(xx-x, yy-y);
-    }//GEN-LAST:event_top_fixed_barMouseDragged
-
     
     private void button_closeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_button_closeMouseClicked
         int opt = JOptionPane.showConfirmDialog(rootPane, "Deseja sair do aplicativo?", "Sair", 0);
@@ -544,9 +684,10 @@ public class Tela_Aluno extends javax.swing.JFrame {
     private void nav_inicioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicioMouseClicked
         open_page(inicio);
     }//GEN-LAST:event_nav_inicioMouseClicked
-
+    
     private void nav_perfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_perfilMouseClicked
         open_page(perfil);
+        
     }//GEN-LAST:event_nav_perfilMouseClicked
 
     private void nav_desempenhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_desempenhoMouseClicked
@@ -576,6 +717,42 @@ public class Tela_Aluno extends javax.swing.JFrame {
     private void nav_materialMouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_materialMouseExited
         resetNavColor(nav_material);
     }//GEN-LAST:event_nav_materialMouseExited
+
+    private void jLabel1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseClicked
+        open_page(perfil);
+    }//GEN-LAST:event_jLabel1MouseClicked
+
+    private void jLabel1MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseEntered
+        jLabel1.setBorder(BorderFactory.createLineBorder(Color.white));
+    }//GEN-LAST:event_jLabel1MouseEntered
+
+    private void jLabel1MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel1MouseExited
+        jLabel1.setBorder(null);
+    }//GEN-LAST:event_jLabel1MouseExited
+
+    private void nav_inicio3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio3MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio3MouseClicked
+
+    private void nav_inicio3MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio3MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio3MouseEntered
+
+    private void nav_inicio3MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio3MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio3MouseExited
+
+    private void nav_inicio4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio4MouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio4MouseClicked
+
+    private void nav_inicio4MouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio4MouseEntered
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio4MouseEntered
+
+    private void nav_inicio4MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nav_inicio4MouseExited
+        // TODO add your handling code here:
+    }//GEN-LAST:event_nav_inicio4MouseExited
 
     /**
      * @param args the command line arguments
@@ -611,13 +788,20 @@ public class Tela_Aluno extends javax.swing.JFrame {
             }
         });
     }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel button_close;
     private javax.swing.JLabel button_logout;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JLabel label_desempenho;
     private javax.swing.JLabel label_frequencia;
     private javax.swing.JLabel label_inicio;
+    private javax.swing.JLabel label_inicio1;
+    private javax.swing.JLabel label_inicio2;
+    private javax.swing.JLabel label_inicio3;
+    private javax.swing.JLabel label_inicio4;
     private javax.swing.JLabel label_ocorrencias1;
     private javax.swing.JLabel label_ocorrencias2;
     private javax.swing.JLabel label_ocorrencias3;
@@ -626,13 +810,17 @@ public class Tela_Aluno extends javax.swing.JFrame {
     private javax.swing.JPanel nav_desempenho;
     private javax.swing.JPanel nav_frequencia;
     private javax.swing.JPanel nav_inicio;
+    private javax.swing.JPanel nav_inicio1;
+    private javax.swing.JPanel nav_inicio2;
+    private javax.swing.JPanel nav_inicio3;
+    private javax.swing.JPanel nav_inicio4;
     private javax.swing.JPanel nav_material;
     private javax.swing.JPanel nav_ocorrencias;
     private javax.swing.JPanel nav_perfil;
     private javax.swing.JPanel navbar;
     private javax.swing.JDesktopPane renderer;
-    private javax.swing.JLabel top_bar_class;
-    private javax.swing.JLabel top_bar_name;
-    private javax.swing.JPanel top_fixed_bar;
+    private javax.swing.JLabel topBar_curso;
+    private javax.swing.JLabel topBar_nome;
+    private javax.swing.JLabel topBar_turma;
     // End of variables declaration//GEN-END:variables
 }

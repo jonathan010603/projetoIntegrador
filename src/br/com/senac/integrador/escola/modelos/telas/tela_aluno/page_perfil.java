@@ -5,6 +5,12 @@
  */
 package br.com.senac.integrador.escola.modelos.telas.tela_aluno;
 
+import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -12,12 +18,15 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  * @author Jonathan
  */
 public class page_perfil extends javax.swing.JInternalFrame {
-
+    int idPessoa;
+    int idEstudante;
+    
     /**
      * Creates new form Inicio
      */
-    public page_perfil() {
+    public page_perfil() throws SQLException {
         initComponents();
+        getInfo(1,1);
         
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI) this.getUI();
@@ -34,17 +43,9 @@ public class page_perfil extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         tab_perfil = new javax.swing.JPanel();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
+        nasc_label = new javax.swing.JLabel();
+        nacio_label = new javax.swing.JLabel();
+        esco_label = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
@@ -56,286 +57,254 @@ public class page_perfil extends javax.swing.JInternalFrame {
         jLabel19 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         jLabel21 = new javax.swing.JLabel();
-        jLabel22 = new javax.swing.JLabel();
-        jLabel23 = new javax.swing.JLabel();
-        jLabel24 = new javax.swing.JLabel();
-        jLabel25 = new javax.swing.JLabel();
-        jLabel26 = new javax.swing.JLabel();
-        jLabel27 = new javax.swing.JLabel();
-        jLabel28 = new javax.swing.JLabel();
-        jLabel29 = new javax.swing.JLabel();
-        jLabel30 = new javax.swing.JLabel();
-        jLabel31 = new javax.swing.JLabel();
-        jLabel32 = new javax.swing.JLabel();
-        jLabel33 = new javax.swing.JLabel();
-        jLabel34 = new javax.swing.JLabel();
-        jLabel35 = new javax.swing.JLabel();
+        email_field = new javax.swing.JLabel();
+        estado_field = new javax.swing.JLabel();
+        fone_field = new javax.swing.JLabel();
+        cidade_field = new javax.swing.JLabel();
+        endereco_field = new javax.swing.JLabel();
+        nasc_field = new javax.swing.JLabel();
+        nacio_field = new javax.swing.JLabel();
+        esco_field = new javax.swing.JLabel();
+        estadoCivil_field = new javax.swing.JLabel();
+        genero_field = new javax.swing.JLabel();
+        defi_field = new javax.swing.JLabel();
+        trab_field = new javax.swing.JLabel();
+        resp_field = new javax.swing.JLabel();
+        insc_field = new javax.swing.JLabel();
+        matr_label = new javax.swing.JLabel();
+        matr_field = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 450));
+        setPreferredSize(new java.awt.Dimension(590, 440));
 
-        tab_perfil.setBackground(new java.awt.Color(94, 113, 171));
+        tab_perfil.setBackground(new java.awt.Color(67, 148, 222));
+        tab_perfil.setPreferredSize(new java.awt.Dimension(590, 530));
 
-        jPanel1.setBackground(new java.awt.Color(60, 52, 117));
+        nasc_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        nasc_label.setForeground(new java.awt.Color(255, 255, 255));
+        nasc_label.setText("Data de Nascimento:");
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/br/com/senac/integrador/escola/modelos/telas/tela_aluno/images/icon_profile.png"))); // NOI18N
+        nacio_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        nacio_label.setForeground(new java.awt.Color(255, 255, 255));
+        nacio_label.setText("Nacionalidade:");
 
-        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel2.setText("Nome:");
+        esco_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        esco_label.setForeground(new java.awt.Color(255, 255, 255));
+        esco_label.setText("Escolaridade:");
 
-        jLabel3.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel3.setText("CPF:");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setText("Matrícula:");
-
-        jLabel5.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel5.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel5.setText(" ");
-
-        jLabel6.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText(" ");
-
-        jLabel7.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText(" ");
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(6, 6, 6)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3)
-                    .addComponent(jLabel4))
-                .addGap(12, 12, 12)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)
-                    .addComponent(jLabel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel5))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel3))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap())
-            .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-        );
-
-        jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel8.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel8.setText("Data de Nascimento:");
-
-        jLabel9.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel9.setText("Nacionalidade:");
-
-        jLabel10.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel10.setText("Escolaridade:");
-
-        jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel11.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel11.setForeground(new java.awt.Color(255, 255, 255));
         jLabel11.setText("Estado Civil:");
 
-        jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel12.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel12.setForeground(new java.awt.Color(255, 255, 255));
         jLabel12.setText("Gênero:");
 
-        jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel13.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
         jLabel13.setText("Deficiência:");
 
-        jLabel14.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel14.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel14.setForeground(new java.awt.Color(255, 255, 255));
         jLabel14.setText("Trabalha:");
 
-        jLabel15.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel15.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel15.setForeground(new java.awt.Color(255, 255, 255));
         jLabel15.setText("Responsável:");
 
-        jLabel16.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel16.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel16.setForeground(new java.awt.Color(255, 255, 255));
         jLabel16.setText("Data de Inscrição:");
 
-        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel17.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel17.setForeground(new java.awt.Color(255, 255, 255));
         jLabel17.setText("Email:");
 
-        jLabel18.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel18.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel18.setForeground(new java.awt.Color(255, 255, 255));
         jLabel18.setText("Telefone:");
 
-        jLabel19.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel19.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel19.setForeground(new java.awt.Color(255, 255, 255));
         jLabel19.setText("Estado:");
 
-        jLabel20.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel20.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel20.setForeground(new java.awt.Color(255, 255, 255));
         jLabel20.setText("Cidade:");
 
-        jLabel21.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
+        jLabel21.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel21.setForeground(new java.awt.Color(255, 255, 255));
         jLabel21.setText("Endereço:");
 
-        jLabel22.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel22.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel22.setText(" ");
+        email_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        email_field.setForeground(new java.awt.Color(255, 255, 255));
+        email_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        email_field.setText(" ");
 
-        jLabel23.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel23.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel23.setText(" ");
+        estado_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        estado_field.setForeground(new java.awt.Color(255, 255, 255));
+        estado_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        estado_field.setText(" ");
 
-        jLabel24.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel24.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel24.setText(" ");
+        fone_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        fone_field.setForeground(new java.awt.Color(255, 255, 255));
+        fone_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        fone_field.setText(" ");
 
-        jLabel25.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel25.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel25.setText(" ");
+        cidade_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        cidade_field.setForeground(new java.awt.Color(255, 255, 255));
+        cidade_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        cidade_field.setText(" ");
 
-        jLabel26.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel26.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel26.setText(" ");
+        endereco_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        endereco_field.setForeground(new java.awt.Color(255, 255, 255));
+        endereco_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        endereco_field.setText(" ");
 
-        jLabel27.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel27.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel27.setText(" ");
+        nasc_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        nasc_field.setForeground(new java.awt.Color(255, 255, 255));
+        nasc_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nasc_field.setText(" ");
 
-        jLabel28.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel28.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel28.setText(" ");
+        nacio_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        nacio_field.setForeground(new java.awt.Color(255, 255, 255));
+        nacio_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        nacio_field.setText(" ");
 
-        jLabel29.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel29.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel29.setText(" ");
+        esco_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        esco_field.setForeground(new java.awt.Color(255, 255, 255));
+        esco_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        esco_field.setText(" ");
 
-        jLabel30.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel30.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel30.setText(" ");
+        estadoCivil_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        estadoCivil_field.setForeground(new java.awt.Color(255, 255, 255));
+        estadoCivil_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        estadoCivil_field.setText(" ");
 
-        jLabel31.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel31.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel31.setText(" ");
+        genero_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        genero_field.setForeground(new java.awt.Color(255, 255, 255));
+        genero_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        genero_field.setText(" ");
 
-        jLabel32.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel32.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel32.setText(" ");
+        defi_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        defi_field.setForeground(new java.awt.Color(255, 255, 255));
+        defi_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        defi_field.setText(" ");
 
-        jLabel33.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel33.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel33.setText(" ");
+        trab_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        trab_field.setForeground(new java.awt.Color(255, 255, 255));
+        trab_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        trab_field.setText(" ");
 
-        jLabel34.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel34.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel34.setText(" ");
+        resp_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        resp_field.setForeground(new java.awt.Color(255, 255, 255));
+        resp_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        resp_field.setText(" ");
 
-        jLabel35.setFont(new java.awt.Font("Segoe UI Semibold", 0, 12)); // NOI18N
-        jLabel35.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel35.setText(" ");
+        insc_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        insc_field.setForeground(new java.awt.Color(255, 255, 255));
+        insc_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        insc_field.setText(" ");
+
+        matr_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        matr_label.setForeground(new java.awt.Color(255, 255, 255));
+        matr_label.setText("Matrícula:");
+
+        matr_field.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        matr_field.setForeground(new java.awt.Color(255, 255, 255));
+        matr_field.setHorizontalAlignment(javax.swing.SwingConstants.LEFT);
+        matr_field.setText(" ");
 
         javax.swing.GroupLayout tab_perfilLayout = new javax.swing.GroupLayout(tab_perfil);
         tab_perfil.setLayout(tab_perfilLayout);
         tab_perfilLayout.setHorizontalGroup(
             tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(tab_perfilLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tab_perfilLayout.createSequentialGroup()
-                        .addComponent(jLabel17)
-                        .addGap(94, 94, 94)
-                        .addComponent(jLabel22, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(tab_perfilLayout.createSequentialGroup()
-                        .addComponent(jLabel18)
-                        .addGap(77, 77, 77)
-                        .addComponent(jLabel24, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel17)
+                            .addComponent(jLabel18))
+                        .addGap(88, 88, 88)
+                        .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(fone_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(email_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(tab_perfilLayout.createSequentialGroup()
                         .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel16)
                             .addComponent(jLabel19)
                             .addComponent(jLabel20)
                             .addComponent(jLabel21)
-                            .addComponent(jLabel8)
-                            .addComponent(jLabel9)
-                            .addComponent(jLabel10)
+                            .addComponent(nasc_label)
+                            .addComponent(nacio_label)
+                            .addComponent(esco_label)
                             .addComponent(jLabel11)
                             .addComponent(jLabel12)
                             .addComponent(jLabel13)
                             .addComponent(jLabel14)
-                            .addComponent(jLabel15))
+                            .addComponent(jLabel15)
+                            .addComponent(matr_label))
                         .addGap(15, 15, 15)
                         .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel35, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel23, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel25, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel26, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel27, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel28, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel29, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel30, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel31, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel32, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel33, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jLabel34, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                            .addComponent(matr_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(insc_field, javax.swing.GroupLayout.DEFAULT_SIZE, 425, Short.MAX_VALUE)
+                            .addComponent(estado_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(cidade_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(endereco_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nasc_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(nacio_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(esco_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(estadoCivil_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(genero_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(defi_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(trab_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(resp_field, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                 .addContainerGap())
         );
         tab_perfilLayout.setVerticalGroup(
             tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab_perfilLayout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_perfilLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(matr_label)
+                    .addComponent(matr_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel16)
+                    .addComponent(insc_field))
+                .addGap(18, 18, 18)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jLabel22))
+                    .addComponent(email_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(jLabel24))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(fone_field))
+                .addGap(18, 18, 18)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
-                    .addComponent(jLabel23))
+                    .addComponent(estado_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel20)
-                    .addComponent(jLabel25))
+                    .addComponent(cidade_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(jLabel26))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(endereco_field))
+                .addGap(18, 18, 18)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel8)
-                    .addComponent(jLabel27))
+                    .addComponent(nasc_label)
+                    .addComponent(nasc_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(jLabel28))
+                    .addComponent(nacio_label)
+                    .addComponent(nacio_field))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tab_perfilLayout.createSequentialGroup()
-                        .addComponent(jLabel10)
+                        .addComponent(esco_label)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel11)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -343,26 +312,22 @@ public class page_perfil extends javax.swing.JInternalFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel13)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel14)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel15)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel16))
+                        .addComponent(jLabel14))
                     .addGroup(tab_perfilLayout.createSequentialGroup()
-                        .addComponent(jLabel29)
+                        .addComponent(esco_field)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel30)
+                        .addComponent(estadoCivil_field)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel31)
+                        .addComponent(genero_field)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel32)
+                        .addComponent(defi_field)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel33)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel34)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel35)))
-                .addContainerGap(19, Short.MAX_VALUE))
+                        .addComponent(trab_field)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel15)
+                    .addComponent(resp_field))
+                .addContainerGap(99, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -373,16 +338,86 @@ public class page_perfil extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, 0)
+                .addComponent(tab_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    private static boolean isSQLSet = false;
+    private static Connection connection;
+    
+    private static Connection createConnection() throws SQLException {
+        if(isSQLSet) {
+            return connection;
+        }
+        //String username = JOptionPane.showInputDialog("Insira o usuário do banco de dados.");
+        //String password = JOptionPane.showInputDialog("Insira a senha do banco de dados.");
+        
+        String username = "root";
+        String password = "inserida";
+        
+        String url = "jdbc:mysql://localhost/appescola";
+        isSQLSet = true;
+        connection = DriverManager.getConnection(url, username, password);
+        return connection;
+    }
+     
+    private void getInfo(int idPessoa, int idEndereco) throws SQLException {        
+        connection = createConnection();
+        Statement statement_pes = connection.createStatement();
+        Statement statement_est = connection.createStatement();
+        Statement statement_end = connection.createStatement();
+        
+        ResultSet dados = statement_pes.executeQuery("SELECT * from pessoa where idPessoa = " + idPessoa);
+        ResultSet dados_est = statement_est.executeQuery("SELECT * from estudante where idPessoa = " + idPessoa);
+        ResultSet dados_end = statement_end.executeQuery("SELECT * from endereco where idEndereco = " + idEndereco);
 
+        dados.next();
+        dados_est.next();
+        dados_end.next();
+        
+        String endereco_BN = (dados_end.getString("bairro")) + " " + dados_end.getString("numero");
+        
+        matr_field.setText(dados_est.getString("idEstudante"));
+        insc_field.setText(dados_est.getString("dataInscricao"));
+        email_field.setText(dados.getString("email"));
+        fone_field.setText(dados.getString("telefone"));
+        estado_field.setText(dados_end.getString("estado"));
+        cidade_field.setText(dados_end.getString("cidade"));
+        endereco_field.setText(endereco_BN);
+        nasc_field.setText(dados_est.getString("dataNascimento"));
+        nacio_field.setText(dados.getString("nacionalidade"));
+        esco_field.setText(dados_est.getString("escolaridade"));
+        estadoCivil_field.setText(dados.getString("estadoCivil"));
+        genero_field.setText(dados.getString("genero"));
+        defi_field.setText(dados.getString("deficiencia"));
+        resp_field.setText(dados_est.getString("nomeResponsavel"));
+        
+        if (dados_est.getString("trabalha") == "1") 
+        {
+            trab_field.setText("Sim");
+        }
+        else 
+        {
+            trab_field.setText("Não");
+        }
+    }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel cidade_field;
+    private javax.swing.JLabel defi_field;
+    private javax.swing.JLabel email_field;
+    private javax.swing.JLabel endereco_field;
+    private javax.swing.JLabel esco_field;
+    private javax.swing.JLabel esco_label;
+    private javax.swing.JLabel estadoCivil_field;
+    private javax.swing.JLabel estado_field;
+    private javax.swing.JLabel fone_field;
+    private javax.swing.JLabel genero_field;
+    private javax.swing.JLabel insc_field;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -392,31 +427,16 @@ public class page_perfil extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
     private javax.swing.JLabel jLabel21;
-    private javax.swing.JLabel jLabel22;
-    private javax.swing.JLabel jLabel23;
-    private javax.swing.JLabel jLabel24;
-    private javax.swing.JLabel jLabel25;
-    private javax.swing.JLabel jLabel26;
-    private javax.swing.JLabel jLabel27;
-    private javax.swing.JLabel jLabel28;
-    private javax.swing.JLabel jLabel29;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel30;
-    private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
-    private javax.swing.JLabel jLabel34;
-    private javax.swing.JLabel jLabel35;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
-    private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
+    private javax.swing.JLabel matr_field;
+    private javax.swing.JLabel matr_label;
+    private javax.swing.JLabel nacio_field;
+    private javax.swing.JLabel nacio_label;
+    private javax.swing.JLabel nasc_field;
+    private javax.swing.JLabel nasc_label;
+    private javax.swing.JLabel resp_field;
     private javax.swing.JPanel tab_perfil;
+    private javax.swing.JLabel trab_field;
     // End of variables declaration//GEN-END:variables
 }

@@ -124,12 +124,16 @@ public abstract class SQLManager {
         if(isSQLSet) {
             return connection;
         }
-        String username = JOptionPane.showInputDialog("Insira o usuário do banco de dados.");
-        String password = JOptionPane.showInputDialog("Insira a senha do banco de dados.");
+        //String username = JOptionPane.showInputDialog("Insira o usuário do banco de dados.");
+        //String password = JOptionPane.showInputDialog("Insira a senha do banco de dados.");
+        
+        String username = "root";
+        String password = "inserida";
         
         String url = "jdbc:mysql://localhost/appescola";
         isSQLSet = true;
         connection = DriverManager.getConnection(url, username, password);
         return connection;
     }
+    
 }
