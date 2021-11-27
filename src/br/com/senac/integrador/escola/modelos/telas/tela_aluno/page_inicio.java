@@ -41,17 +41,17 @@ public class page_inicio extends javax.swing.JInternalFrame {
         jLabel22 = new javax.swing.JLabel();
         jPanel6 = new javax.swing.JPanel();
         jLabel23 = new javax.swing.JLabel();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        table_desempenho3 = new javax.swing.JTable();
         jLabel24 = new javax.swing.JLabel();
         jPanel19 = new javax.swing.JPanel();
         jLabel25 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table_desempenho3 = new javax.swing.JTable();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 440));
+        setPreferredSize(new java.awt.Dimension(590, 480));
 
         tab_inicio.setBackground(new java.awt.Color(255, 255, 255));
-        tab_inicio.setPreferredSize(new java.awt.Dimension(590, 530));
+        tab_inicio.setPreferredSize(new java.awt.Dimension(590, 480));
 
         jScrollPane2.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
@@ -59,19 +59,7 @@ public class page_inicio extends javax.swing.JInternalFrame {
         table_desempenho1.setForeground(new java.awt.Color(54, 164, 255));
         table_desempenho1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
                 "Data", "Aula nº", "Disciplina"
@@ -135,60 +123,6 @@ public class page_inicio extends javax.swing.JInternalFrame {
                 .addComponent(jLabel23))
         );
 
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        table_desempenho3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
-        table_desempenho3.setForeground(new java.awt.Color(54, 164, 255));
-        table_desempenho3.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
-            },
-            new String [] {
-                "Disciplina", "Prova nº", "Data"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.Integer.class, java.lang.String.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        table_desempenho3.setToolTipText("");
-        table_desempenho3.setFocusable(false);
-        table_desempenho3.setGridColor(new java.awt.Color(54, 164, 255));
-        table_desempenho3.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        table_desempenho3.setPreferredSize(new java.awt.Dimension(278, 287));
-        table_desempenho3.setRowHeight(20);
-        table_desempenho3.setShowGrid(true);
-        table_desempenho3.setShowHorizontalLines(false);
-        table_desempenho3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(table_desempenho3);
-        table_desempenho3.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        table_desempenho3.getTableHeader().setForeground(new Color(54,164,255));
-        table_desempenho3.getTableHeader().setOpaque(false);
-        table_desempenho3.setRowHeight(20);
-
         jLabel24.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel24.setForeground(new java.awt.Color(54, 164, 255));
         jLabel24.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -214,6 +148,36 @@ public class page_inicio extends javax.swing.JInternalFrame {
                 .addComponent(jLabel25))
         );
 
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        table_desempenho3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
+        table_desempenho3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Tipo", "Data", "Disciplina", "Nota", "Trimestre"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table_desempenho3.setToolTipText("");
+        table_desempenho3.setFocusable(false);
+        table_desempenho3.setGridColor(new java.awt.Color(54, 164, 255));
+        table_desempenho3.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_desempenho3.setPreferredSize(new java.awt.Dimension(278, 287));
+        table_desempenho3.setRowHeight(20);
+        table_desempenho3.setShowGrid(true);
+        table_desempenho3.setShowHorizontalLines(false);
+        table_desempenho3.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(table_desempenho3);
+
         javax.swing.GroupLayout tab_inicioLayout = new javax.swing.GroupLayout(tab_inicio);
         tab_inicio.setLayout(tab_inicioLayout);
         tab_inicioLayout.setHorizontalGroup(
@@ -221,20 +185,19 @@ public class page_inicio extends javax.swing.JInternalFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_inicioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(tab_inicioLayout.createSequentialGroup()
                         .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel24)
-                        .addGap(0, 153, Short.MAX_VALUE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jLabel24))
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 284, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(tab_inicioLayout.createSequentialGroup()
                         .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel22)
-                        .addGap(0, 153, Short.MAX_VALUE)))
+                        .addGap(0, 148, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         tab_inicioLayout.setVerticalGroup(
@@ -242,23 +205,18 @@ public class page_inicio extends javax.swing.JInternalFrame {
             .addGroup(tab_inicioLayout.createSequentialGroup()
                 .addGap(10, 10, 10)
                 .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(tab_inicioLayout.createSequentialGroup()
+                        .addGap(8, 8, 8)
                         .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(tab_inicioLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel22)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(tab_inicioLayout.createSequentialGroup()
-                        .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jPanel19, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(tab_inicioLayout.createSequentialGroup()
-                                .addGap(8, 8, 8)
-                                .addComponent(jLabel24)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 287, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(159, Short.MAX_VALUE))
+                            .addComponent(jLabel22)
+                            .addComponent(jLabel24))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 287, Short.MAX_VALUE)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                .addContainerGap(109, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -269,7 +227,7 @@ public class page_inicio extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
+            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
         );
 
         pack();

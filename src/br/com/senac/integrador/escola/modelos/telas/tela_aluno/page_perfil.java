@@ -75,10 +75,10 @@ public class page_perfil extends javax.swing.JInternalFrame {
         matr_field = new javax.swing.JLabel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 440));
+        setPreferredSize(new java.awt.Dimension(590, 480));
 
         tab_perfil.setBackground(new java.awt.Color(67, 148, 222));
-        tab_perfil.setPreferredSize(new java.awt.Dimension(590, 530));
+        tab_perfil.setPreferredSize(new java.awt.Dimension(590, 480));
 
         nasc_label.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         nasc_label.setForeground(new java.awt.Color(255, 255, 255));
@@ -327,7 +327,7 @@ public class page_perfil extends javax.swing.JInternalFrame {
                 .addGroup(tab_perfilLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel15)
                     .addComponent(resp_field))
-                .addContainerGap(99, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -338,9 +338,7 @@ public class page_perfil extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, 0)
-                .addComponent(tab_perfil, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addComponent(tab_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, 442, Short.MAX_VALUE)
         );
 
         pack();

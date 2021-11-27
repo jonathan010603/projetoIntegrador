@@ -36,9 +36,10 @@ public class page_material extends javax.swing.JInternalFrame {
         tab_perfil = new javax.swing.JPanel();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 440));
+        setPreferredSize(new java.awt.Dimension(590, 480));
 
         tab_perfil.setBackground(new java.awt.Color(67, 148, 222));
+        tab_perfil.setPreferredSize(new java.awt.Dimension(590, 480));
 
         javax.swing.GroupLayout tab_perfilLayout = new javax.swing.GroupLayout(tab_perfil);
         tab_perfil.setLayout(tab_perfilLayout);
@@ -59,7 +60,7 @@ public class page_material extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_perfil, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();

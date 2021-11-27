@@ -50,9 +50,10 @@ public class page_ocorrencias extends javax.swing.JInternalFrame {
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 440));
+        setPreferredSize(new java.awt.Dimension(590, 480));
 
         tab_inicio.setBackground(new java.awt.Color(67, 148, 222));
+        tab_inicio.setPreferredSize(new java.awt.Dimension(590, 480));
 
         jLabel8.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
         jLabel8.setForeground(new java.awt.Color(255, 255, 255));
@@ -167,7 +168,7 @@ public class page_ocorrencias extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 413, Short.MAX_VALUE)
         );
 
         pack();

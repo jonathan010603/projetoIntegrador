@@ -5,6 +5,8 @@
  */
 package br.com.senac.integrador.escola.modelos.telas.tela_aluno;
 
+import java.awt.Color;
+import java.awt.Font;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
 
 /**
@@ -34,21 +36,154 @@ public class page_desempenho extends javax.swing.JInternalFrame {
     private void initComponents() {
 
         tab_inicio = new javax.swing.JPanel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        table_desempenho3 = new javax.swing.JTable();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        table_desempenho4 = new javax.swing.JTable();
+        jLabel2 = new javax.swing.JLabel();
+        combo_trimestre = new javax.swing.JComboBox<>();
 
         setBorder(null);
-        setPreferredSize(new java.awt.Dimension(590, 440));
+        setPreferredSize(new java.awt.Dimension(590, 480));
 
         tab_inicio.setBackground(new java.awt.Color(67, 148, 222));
+        tab_inicio.setPreferredSize(new java.awt.Dimension(590, 480));
+
+        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        table_desempenho3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
+        table_desempenho3.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Disciplina", "Tipo", "Data", "Nota"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table_desempenho3.setToolTipText("");
+        table_desempenho3.setFocusable(false);
+        table_desempenho3.setGridColor(new java.awt.Color(54, 164, 255));
+        table_desempenho3.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_desempenho3.setPreferredSize(new java.awt.Dimension(278, 287));
+        table_desempenho3.setRowHeight(20);
+        table_desempenho3.setShowGrid(true);
+        table_desempenho3.setShowHorizontalLines(false);
+        table_desempenho3.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(table_desempenho3);
+        table_desempenho3.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table_desempenho3.getTableHeader().setForeground(new Color(54,164,255));
+        table_desempenho3.getTableHeader().setOpaque(false);
+        table_desempenho3.setRowHeight(20);
+        if (table_desempenho3.getColumnModel().getColumnCount() > 0) {
+            table_desempenho3.getColumnModel().getColumn(0).setPreferredWidth(60);
+            table_desempenho3.getColumnModel().getColumn(2).setPreferredWidth(30);
+            table_desempenho3.getColumnModel().getColumn(3).setPreferredWidth(60);
+        }
+
+        jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
+
+        table_desempenho4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
+        table_desempenho4.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {"Artes", null, null, null, null, null, null, null, null},
+                {"Biologia", null, null, null, null, null, null, null, null},
+                {"Ed. Física", null, null, null, null, null, null, null, null},
+                {"Filosofia", null, null, null, null, null, null, null, null},
+                {"Física", null, null, null, null, null, null, null, null},
+                {"Geografia", null, null, null, null, null, null, null, null},
+                {"História", null, null, null, null, null, null, null, null},
+                {"Inglês", null, null, null, null, null, null, null, null},
+                {"Literatura", null, null, null, null, null, null, null, null},
+                {"Mat", null, null, null, null, null, null, null, null},
+                {"Português", null, null, null, null, null, null, null, null},
+                {"Química", null, null, null, null, null, null, null, null},
+                {"Sociologia", null, null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "", "1º Tri", "F", "2º Tri", "F", "3º Tri", "F", "Média", "F"
+            }
+        ) {
+            Class[] types = new Class [] {
+                java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class
+            };
+
+            public Class getColumnClass(int columnIndex) {
+                return types [columnIndex];
+            }
+        });
+        table_desempenho4.setToolTipText("");
+        table_desempenho4.setFocusable(false);
+        table_desempenho4.setGridColor(new java.awt.Color(54, 164, 255));
+        table_desempenho4.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_desempenho4.setPreferredSize(new java.awt.Dimension(278, 287));
+        table_desempenho4.setRowHeight(18);
+        table_desempenho4.setShowGrid(true);
+        table_desempenho4.setShowHorizontalLines(false);
+        table_desempenho4.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(table_desempenho4);
+        table_desempenho4.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table_desempenho4.getTableHeader().setForeground(new Color(54,164,255));
+        table_desempenho4.getTableHeader().setOpaque(false);
+        table_desempenho4.setRowHeight(18);
+        if (table_desempenho4.getColumnModel().getColumnCount() > 0) {
+            table_desempenho4.getColumnModel().getColumn(0).setPreferredWidth(70);
+            table_desempenho4.getColumnModel().getColumn(0).setHeaderValue("");
+            table_desempenho4.getColumnModel().getColumn(1).setPreferredWidth(60);
+            table_desempenho4.getColumnModel().getColumn(2).setPreferredWidth(30);
+            table_desempenho4.getColumnModel().getColumn(3).setPreferredWidth(60);
+            table_desempenho4.getColumnModel().getColumn(4).setPreferredWidth(30);
+            table_desempenho4.getColumnModel().getColumn(5).setPreferredWidth(60);
+            table_desempenho4.getColumnModel().getColumn(5).setHeaderValue("3º Tri");
+            table_desempenho4.getColumnModel().getColumn(6).setPreferredWidth(30);
+            table_desempenho4.getColumnModel().getColumn(6).setHeaderValue("F");
+            table_desempenho4.getColumnModel().getColumn(7).setPreferredWidth(60);
+            table_desempenho4.getColumnModel().getColumn(7).setHeaderValue("Avaliação Nº");
+            table_desempenho4.getColumnModel().getColumn(8).setPreferredWidth(60);
+            table_desempenho4.getColumnModel().getColumn(8).setHeaderValue("F");
+        }
+
+        jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
+        jLabel2.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel2.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel2.setText("Boletim");
+
+        combo_trimestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º Tri", "2º Tri", "3º Tri"}));
 
         javax.swing.GroupLayout tab_inicioLayout = new javax.swing.GroupLayout(tab_inicio);
         tab_inicio.setLayout(tab_inicioLayout);
         tab_inicioLayout.setHorizontalGroup(
             tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 590, Short.MAX_VALUE)
+            .addGroup(tab_inicioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 570, Short.MAX_VALUE)
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(tab_inicioLayout.createSequentialGroup()
+                        .addComponent(combo_trimestre, javax.swing.GroupLayout.PREFERRED_SIZE, 81, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         tab_inicioLayout.setVerticalGroup(
             tab_inicioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 427, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab_inicioLayout.createSequentialGroup()
+                .addGap(4, 4, 4)
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(combo_trimestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -59,7 +194,7 @@ public class page_desempenho extends javax.swing.JInternalFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(tab_inicio, javax.swing.GroupLayout.DEFAULT_SIZE, 453, Short.MAX_VALUE)
         );
 
         pack();
@@ -67,6 +202,12 @@ public class page_desempenho extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> combo_trimestre;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel tab_inicio;
+    private javax.swing.JTable table_desempenho3;
+    private javax.swing.JTable table_desempenho4;
     // End of variables declaration//GEN-END:variables
 }
