@@ -7,7 +7,15 @@ package br.com.senac.integrador.escola.modelos.telas.tela_aluno;
 
 import java.awt.Color;
 import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.plaf.basic.BasicInternalFrameUI;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -15,15 +23,21 @@ import javax.swing.plaf.basic.BasicInternalFrameUI;
  */
 public class page_desempenho extends javax.swing.JInternalFrame {
 
+    DefaultTableModel model_disciplina;
+    
     /**
      * Creates new form Inicio
      */
-    public page_desempenho() {
+    public page_desempenho() throws SQLException {
         initComponents();
         
+        model_disciplina = (DefaultTableModel) table_disciplina.getModel();  
+              
         this.setBorder(javax.swing.BorderFactory.createEmptyBorder(0, 0, 0, 0));
         BasicInternalFrameUI bi = (BasicInternalFrameUI) this.getUI();
         bi.setNorthPane(null);
+        
+        fillDisciplina(1,1,1);
     }
 
     /**
@@ -37,9 +51,9 @@ public class page_desempenho extends javax.swing.JInternalFrame {
 
         tab_inicio = new javax.swing.JPanel();
         jScrollPane4 = new javax.swing.JScrollPane();
-        table_desempenho3 = new javax.swing.JTable();
+        table_disciplina = new javax.swing.JTable();
         jScrollPane5 = new javax.swing.JScrollPane();
-        table_desempenho4 = new javax.swing.JTable();
+        table_desempenho = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         combo_trimestre = new javax.swing.JComboBox<>();
 
@@ -49,10 +63,8 @@ public class page_desempenho extends javax.swing.JInternalFrame {
         tab_inicio.setBackground(new java.awt.Color(67, 148, 222));
         tab_inicio.setPreferredSize(new java.awt.Dimension(590, 480));
 
-        jScrollPane4.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
-
-        table_desempenho3.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
-        table_desempenho3.setModel(new javax.swing.table.DefaultTableModel(
+        table_disciplina.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
+        table_disciplina.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -63,35 +75,42 @@ public class page_desempenho extends javax.swing.JInternalFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.Double.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        table_desempenho3.setToolTipText("");
-        table_desempenho3.setFocusable(false);
-        table_desempenho3.setGridColor(new java.awt.Color(54, 164, 255));
-        table_desempenho3.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        table_desempenho3.setPreferredSize(new java.awt.Dimension(278, 287));
-        table_desempenho3.setRowHeight(20);
-        table_desempenho3.setShowGrid(true);
-        table_desempenho3.setShowHorizontalLines(false);
-        table_desempenho3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane4.setViewportView(table_desempenho3);
-        table_desempenho3.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        table_desempenho3.getTableHeader().setForeground(new Color(54,164,255));
-        table_desempenho3.getTableHeader().setOpaque(false);
-        table_desempenho3.setRowHeight(20);
-        if (table_desempenho3.getColumnModel().getColumnCount() > 0) {
-            table_desempenho3.getColumnModel().getColumn(0).setPreferredWidth(60);
-            table_desempenho3.getColumnModel().getColumn(2).setPreferredWidth(30);
-            table_desempenho3.getColumnModel().getColumn(3).setPreferredWidth(60);
+        table_disciplina.setToolTipText("");
+        table_disciplina.setFocusable(false);
+        table_disciplina.setGridColor(new java.awt.Color(0, 0, 0));
+        table_disciplina.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_disciplina.setPreferredSize(new java.awt.Dimension(278, 287));
+        table_disciplina.setRowHeight(20);
+        table_disciplina.setSelectionBackground(new java.awt.Color(232, 180, 88));
+        table_disciplina.setShowGrid(true);
+        table_disciplina.setShowHorizontalLines(false);
+        table_disciplina.getTableHeader().setReorderingAllowed(false);
+        jScrollPane4.setViewportView(table_disciplina);
+        table_disciplina.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table_disciplina.getTableHeader().setOpaque(false);
+        table_disciplina.setRowHeight(20);
+        if (table_disciplina.getColumnModel().getColumnCount() > 0) {
+            table_disciplina.getColumnModel().getColumn(0).setPreferredWidth(60);
+            table_disciplina.getColumnModel().getColumn(2).setPreferredWidth(30);
+            table_disciplina.getColumnModel().getColumn(3).setPreferredWidth(60);
         }
 
         jScrollPane5.setVerticalScrollBarPolicy(javax.swing.ScrollPaneConstants.VERTICAL_SCROLLBAR_NEVER);
 
-        table_desempenho4.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
-        table_desempenho4.setModel(new javax.swing.table.DefaultTableModel(
+        table_desempenho.setFont(new java.awt.Font("Segoe UI Semibold", 1, 10)); // NOI18N
+        table_desempenho.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {"Artes", null, null, null, null, null, null, null, null},
                 {"Biologia", null, null, null, null, null, null, null, null},
@@ -108,46 +127,53 @@ public class page_desempenho extends javax.swing.JInternalFrame {
                 {"Sociologia", null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "", "1º Tri", "F", "2º Tri", "F", "3º Tri", "F", "Média", "F"
+                "", "1º Tri", "F", "2º Tri", "F", "3º Tri", "F", "Avaliação Nº", "F"
             }
         ) {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class, java.lang.Double.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
-        table_desempenho4.setToolTipText("");
-        table_desempenho4.setFocusable(false);
-        table_desempenho4.setGridColor(new java.awt.Color(54, 164, 255));
-        table_desempenho4.setIntercellSpacing(new java.awt.Dimension(0, 0));
-        table_desempenho4.setPreferredSize(new java.awt.Dimension(278, 287));
-        table_desempenho4.setRowHeight(18);
-        table_desempenho4.setShowGrid(true);
-        table_desempenho4.setShowHorizontalLines(false);
-        table_desempenho4.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(table_desempenho4);
-        table_desempenho4.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
-        table_desempenho4.getTableHeader().setForeground(new Color(54,164,255));
-        table_desempenho4.getTableHeader().setOpaque(false);
-        table_desempenho4.setRowHeight(18);
-        if (table_desempenho4.getColumnModel().getColumnCount() > 0) {
-            table_desempenho4.getColumnModel().getColumn(0).setPreferredWidth(70);
-            table_desempenho4.getColumnModel().getColumn(0).setHeaderValue("");
-            table_desempenho4.getColumnModel().getColumn(1).setPreferredWidth(60);
-            table_desempenho4.getColumnModel().getColumn(2).setPreferredWidth(30);
-            table_desempenho4.getColumnModel().getColumn(3).setPreferredWidth(60);
-            table_desempenho4.getColumnModel().getColumn(4).setPreferredWidth(30);
-            table_desempenho4.getColumnModel().getColumn(5).setPreferredWidth(60);
-            table_desempenho4.getColumnModel().getColumn(5).setHeaderValue("3º Tri");
-            table_desempenho4.getColumnModel().getColumn(6).setPreferredWidth(30);
-            table_desempenho4.getColumnModel().getColumn(6).setHeaderValue("F");
-            table_desempenho4.getColumnModel().getColumn(7).setPreferredWidth(60);
-            table_desempenho4.getColumnModel().getColumn(7).setHeaderValue("Avaliação Nº");
-            table_desempenho4.getColumnModel().getColumn(8).setPreferredWidth(60);
-            table_desempenho4.getColumnModel().getColumn(8).setHeaderValue("F");
+        table_desempenho.setToolTipText("");
+        table_desempenho.setFocusable(false);
+        table_desempenho.setGridColor(new java.awt.Color(0, 0, 0));
+        table_desempenho.setIntercellSpacing(new java.awt.Dimension(0, 0));
+        table_desempenho.setPreferredSize(new java.awt.Dimension(278, 287));
+        table_desempenho.setRowHeight(18);
+        table_desempenho.setSelectionBackground(new java.awt.Color(232, 180, 88));
+        table_desempenho.setShowGrid(true);
+        table_desempenho.setShowHorizontalLines(false);
+        table_desempenho.getTableHeader().setReorderingAllowed(false);
+        table_desempenho.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                table_desempenhoMouseClicked(evt);
+            }
+        });
+        jScrollPane5.setViewportView(table_desempenho);
+        table_desempenho.getTableHeader().setFont(new Font("Segoe UI", Font.BOLD, 12));
+        table_desempenho.getTableHeader().setOpaque(false);
+        table_desempenho.setRowHeight(18);
+        if (table_desempenho.getColumnModel().getColumnCount() > 0) {
+            table_desempenho.getColumnModel().getColumn(0).setPreferredWidth(70);
+            table_desempenho.getColumnModel().getColumn(1).setPreferredWidth(60);
+            table_desempenho.getColumnModel().getColumn(2).setPreferredWidth(30);
+            table_desempenho.getColumnModel().getColumn(3).setPreferredWidth(60);
+            table_desempenho.getColumnModel().getColumn(4).setPreferredWidth(30);
+            table_desempenho.getColumnModel().getColumn(5).setPreferredWidth(60);
+            table_desempenho.getColumnModel().getColumn(6).setPreferredWidth(30);
+            table_desempenho.getColumnModel().getColumn(7).setPreferredWidth(60);
+            table_desempenho.getColumnModel().getColumn(8).setPreferredWidth(60);
         }
 
         jLabel2.setFont(new java.awt.Font("Segoe UI Semibold", 0, 14)); // NOI18N
@@ -156,6 +182,11 @@ public class page_desempenho extends javax.swing.JInternalFrame {
         jLabel2.setText("Boletim");
 
         combo_trimestre.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "1º Tri", "2º Tri", "3º Tri"}));
+        combo_trimestre.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                combo_trimestreItemStateChanged(evt);
+            }
+        });
 
         javax.swing.GroupLayout tab_inicioLayout = new javax.swing.GroupLayout(tab_inicio);
         tab_inicio.setLayout(tab_inicioLayout);
@@ -178,11 +209,11 @@ public class page_desempenho extends javax.swing.JInternalFrame {
                 .addGap(4, 4, 4)
                 .addComponent(jLabel2)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 264, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(combo_trimestre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane4, javax.swing.GroupLayout.PREFERRED_SIZE, 107, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 114, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -200,6 +231,77 @@ public class page_desempenho extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    private void table_desempenhoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_table_desempenhoMouseClicked
+        if(table_desempenho.getSelectedRow() == 0) 
+        {
+            try {
+                fillDisciplina(1, 1, combo_trimestre.getSelectedIndex() + 1);
+            } catch (SQLException ex) {
+                Logger.getLogger(page_desempenho.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        else 
+        {
+            try {
+                fillDisciplina(table_desempenho.getSelectedRow() + 1, 1, combo_trimestre.getSelectedIndex() + 1);
+            } catch (SQLException ex) {
+                Logger.getLogger(page_desempenho.class.getName()).log(Level.SEVERE, null, ex);
+            }           
+        }
+    }//GEN-LAST:event_table_desempenhoMouseClicked
+
+    private void combo_trimestreItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_combo_trimestreItemStateChanged
+        try {
+            fillDisciplina(table_desempenho.getSelectedRow() + 1, 1, combo_trimestre.getSelectedIndex() + 1);
+        } catch (SQLException ex) {
+            Logger.getLogger(page_desempenho.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_combo_trimestreItemStateChanged
+    
+    private static boolean isSQLSet = false;
+    private static Connection connection;
+    
+    private static Connection createConnection() throws SQLException {
+        if(isSQLSet) {
+            return connection;
+        }
+        //String username = JOptionPane.showInputDialog("Insira o usuário do banco de dados.");
+        //String password = JOptionPane.showInputDialog("Insira a senha do banco de dados.");
+        
+        String username = "root";
+        String password = "inserida";
+        
+        String url = "jdbc:mysql://localhost/appescola";
+        isSQLSet = true;
+        connection = DriverManager.getConnection(url, username, password);
+        return connection;
+    }
+     
+   
+    
+    
+    private void fillDisciplina(int select_disciplina, int idEstudante, int trimestre) throws SQLException 
+    {
+        connection = createConnection();
+        Statement statement = connection.createStatement();
+        
+        ResultSet notas = statement.executeQuery("SELECT * from nota where idEstudante = " + idEstudante + " and disciplinaNota = " + select_disciplina + " and trimestre = " + trimestre);
+
+        model_disciplina.setRowCount(0);
+        
+        while(notas.next())
+        {
+            String disciplina = notas.getString("disciplinaNota");
+            String tipo = notas.getString("tipoNota");
+            String data = notas.getString("dataNota");
+            double nota = notas.getDouble("nota");
+            
+            Object dadosNota[] = {disciplina, tipo, data, nota};  
+            
+            model_disciplina.addRow(dadosNota);
+        } 
+    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> combo_trimestre;
@@ -207,7 +309,7 @@ public class page_desempenho extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JPanel tab_inicio;
-    private javax.swing.JTable table_desempenho3;
-    private javax.swing.JTable table_desempenho4;
+    private javax.swing.JTable table_desempenho;
+    private javax.swing.JTable table_disciplina;
     // End of variables declaration//GEN-END:variables
 }

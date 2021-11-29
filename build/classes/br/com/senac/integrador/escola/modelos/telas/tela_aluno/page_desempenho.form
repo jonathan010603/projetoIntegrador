@@ -71,11 +71,11 @@
                   <EmptySpace min="-2" pref="4" max="-2" attributes="0"/>
                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane5" min="-2" pref="264" max="-2" attributes="0"/>
-                  <EmptySpace pref="13" max="32767" attributes="0"/>
+                  <Component id="jScrollPane5" min="-2" pref="259" max="-2" attributes="0"/>
+                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="combo_trimestre" min="-2" max="-2" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jScrollPane4" min="-2" pref="107" max="-2" attributes="0"/>
+                  <Component id="jScrollPane4" pref="114" max="32767" attributes="0"/>
                   <EmptySpace max="-2" attributes="0"/>
               </Group>
           </Group>
@@ -83,30 +83,27 @@
       </Layout>
       <SubComponents>
         <Container class="javax.swing.JScrollPane" name="jScrollPane4">
-          <Properties>
-            <Property name="verticalScrollBarPolicy" type="int" value="21"/>
-          </Properties>
           <AuxValues>
             <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
           </AuxValues>
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="table_desempenho3">
+            <Component class="javax.swing.JTable" name="table_disciplina">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Semibold" size="10" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="4" rowCount="0">
-                    <Column editable="true" title="Disciplina" type="java.lang.String"/>
-                    <Column editable="true" title="Tipo" type="java.lang.String"/>
-                    <Column editable="true" title="Data" type="java.lang.String"/>
-                    <Column editable="true" title="Nota" type="java.lang.Double"/>
+                    <Column editable="false" title="Disciplina" type="java.lang.String"/>
+                    <Column editable="false" title="Tipo" type="java.lang.String"/>
+                    <Column editable="false" title="Data" type="java.lang.String"/>
+                    <Column editable="false" title="Nota" type="java.lang.Double"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="table_desempenho3.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));&#xa;table_desempenho3.getTableHeader().setForeground(new Color(54,164,255));&#xa;table_desempenho3.getTableHeader().setOpaque(false);&#xa;table_desempenho3.setRowHeight(20);">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="table_disciplina.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));&#xa;table_disciplina.getTableHeader().setOpaque(false);&#xa;table_disciplina.setRowHeight(20);">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
                       <Title/>
@@ -132,7 +129,7 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="a4" red="36" type="rgb"/>
+                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="intercellSpacing" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[0, 0]"/>
@@ -141,6 +138,9 @@
                   <Dimension value="[278, 287]"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="20"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="58" green="b4" red="e8" type="rgb"/>
+                </Property>
                 <Property name="showGrid" type="boolean" value="true"/>
                 <Property name="showHorizontalLines" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
@@ -160,14 +160,14 @@
 
           <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
           <SubComponents>
-            <Component class="javax.swing.JTable" name="table_desempenho4">
+            <Component class="javax.swing.JTable" name="table_desempenho">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Segoe UI Semibold" size="10" style="1"/>
                 </Property>
                 <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
                   <Table columnCount="9" rowCount="13">
-                    <Column editable="true" title="" type="java.lang.String">
+                    <Column editable="false" title="" type="java.lang.String">
                       <Data value="Artes"/>
                       <Data value="Biologia"/>
                       <Data value="Ed. F&#xed;sica"/>
@@ -182,21 +182,31 @@
                       <Data value="Qu&#xed;mica"/>
                       <Data value="Sociologia"/>
                     </Column>
-                    <Column editable="true" title="1&#xba; Tri" type="java.lang.Double"/>
-                    <Column editable="true" title="F" type="java.lang.Integer"/>
-                    <Column editable="true" title="2&#xba; Tri" type="java.lang.Double"/>
-                    <Column editable="true" title="F" type="java.lang.Integer"/>
-                    <Column editable="true" title="3&#xba; Tri" type="java.lang.Double"/>
-                    <Column editable="true" title="F" type="java.lang.Integer"/>
-                    <Column editable="true" title="M&#xe9;dia" type="java.lang.Double"/>
-                    <Column editable="true" title="F" type="java.lang.Integer"/>
+                    <Column editable="false" title="1&#xba; Tri" type="java.lang.Double"/>
+                    <Column editable="false" title="F" type="java.lang.Integer"/>
+                    <Column editable="false" title="2&#xba; Tri" type="java.lang.Double"/>
+                    <Column editable="false" title="F" type="java.lang.Integer"/>
+                    <Column editable="false" title="3&#xba; Tri" type="java.lang.Double"/>
+                    <Column editable="false" title="F" type="java.lang.Integer"/>
+                    <Column editable="false" title="Avalia&#xe7;&#xe3;o N&#xba;" type="java.lang.Double"/>
+                    <Column editable="false" title="F" type="java.lang.Integer"/>
                   </Table>
                 </Property>
                 <Property name="toolTipText" type="java.lang.String" value=""/>
-                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="table_desempenho4.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));&#xa;table_desempenho4.getTableHeader().setForeground(new Color(54,164,255));&#xa;table_desempenho4.getTableHeader().setOpaque(false);&#xa;table_desempenho4.setRowHeight(18);">
+                <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor" preCode="table_desempenho.getTableHeader().setFont(new Font(&quot;Segoe UI&quot;, Font.BOLD, 12));&#xa;table_desempenho.getTableHeader().setOpaque(false);&#xa;table_desempenho.setRowHeight(18);">
                   <TableColumnModel selectionModel="0">
                     <Column maxWidth="-1" minWidth="-1" prefWidth="70" resizable="true">
-                      <Title value=""/>
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
+                      <Title/>
+                      <Editor/>
+                      <Renderer/>
+                    </Column>
+                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
@@ -221,22 +231,12 @@
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
-                      <Title value="3&#xba; Tri"/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="30" resizable="true">
-                      <Title value="F"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
                     <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
-                      <Title value="Avalia&#xe7;&#xe3;o N&#xba;"/>
-                      <Editor/>
-                      <Renderer/>
-                    </Column>
-                    <Column maxWidth="-1" minWidth="-1" prefWidth="60" resizable="true">
-                      <Title value="F"/>
+                      <Title/>
                       <Editor/>
                       <Renderer/>
                     </Column>
@@ -244,7 +244,7 @@
                 </Property>
                 <Property name="focusable" type="boolean" value="false"/>
                 <Property name="gridColor" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-                  <Color blue="ff" green="a4" red="36" type="rgb"/>
+                  <Color blue="0" green="0" red="0" type="rgb"/>
                 </Property>
                 <Property name="intercellSpacing" type="java.awt.Dimension" editor="org.netbeans.beaninfo.editors.DimensionEditor">
                   <Dimension value="[0, 0]"/>
@@ -253,12 +253,18 @@
                   <Dimension value="[278, 287]"/>
                 </Property>
                 <Property name="rowHeight" type="int" value="18"/>
+                <Property name="selectionBackground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
+                  <Color blue="58" green="b4" red="e8" type="rgb"/>
+                </Property>
                 <Property name="showGrid" type="boolean" value="true"/>
                 <Property name="showHorizontalLines" type="boolean" value="false"/>
                 <Property name="tableHeader" type="javax.swing.table.JTableHeader" editor="org.netbeans.modules.form.editors2.JTableHeaderEditor">
                   <TableHeader reorderingAllowed="false" resizingAllowed="true"/>
                 </Property>
               </Properties>
+              <Events>
+                <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="table_desempenhoMouseClicked"/>
+              </Events>
             </Component>
           </SubComponents>
         </Container>
@@ -280,6 +286,9 @@
               <Connection code="new javax.swing.DefaultComboBoxModel&lt;&gt;(new String[] { &quot;1&#xba; Tri&quot;, &quot;2&#xba; Tri&quot;, &quot;3&#xba; Tri&quot;})" type="code"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="itemStateChanged" listener="java.awt.event.ItemListener" parameters="java.awt.event.ItemEvent" handler="combo_trimestreItemStateChanged"/>
+          </Events>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
           </AuxValues>
